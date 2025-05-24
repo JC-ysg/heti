@@ -1,0 +1,209 @@
+# Memory Monitor Usage Guide
+
+The Memory Monitor provides real-time tracking of memory operations in the OpenMemory system. This document outlines how to use, configure, and integrate the monitor with your Heti project.
+
+## Basic Usage
+
+### Starting the Monitor
+
+```python
+from agent.memory_monitor import MemoryMonitor
+
+# Create a monitor instance with default configuration
+monitor = MemoryMonitor()
+
+# Start monitoring
+monitor.start()
+
+# To stop when done
+monitor.stop()
+```
+
+### Command Line Usage
+
+The monitor can also be run directly from the command line:
+
+```bash
+# Start with default configuration
+python -m agent.memory_monitor --run
+
+# Use custom configuration file
+python -m agent.memory_monitor --config path/to/config.yaml --run
+
+# Show current status and exit
+python -m agent.memory_monitor --status
+```
+
+## Configuration
+
+The monitor reads its configuration from `config/memory_monitor.yaml`. You can override the default path when creating a monitor instance:
+
+```python
+monitor = MemoryMonitor(config_path="custom/config/path.yaml")
+```
+
+### Key Configuration Options
+
+```yaml
+polling:
+  enabled: true                # Enable/disable polling
+  interval_seconds: 5          # Time between polls
+  max_batch_size: 100          # Maximum events to process per poll
+  lookback_window_minutes: 5   # Initial lookback period
+
+logging:
+  file_enabled: true
+  file_path: "logs/memory_events/events.log"
+  event_log_path: "logs/memory_events/memory_events.jsonl"
+  console_level: "INFO"        # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  file_level: "DEBUG"
+
+event_types:                   # Enable/disable specific event types
+  memory.created: true
+  memory.updated: true
+  memory.deleted: true
+  memory.accessed: false
+  embedding.started: true
+  embedding.completed: true
+  memory.error: true
+  memory.batch_operation: true
+
+# See config/memory_monitor.yaml for all options
+```
+
+### Environment Variable Overrides
+
+Configuration can be overridden using environment variables with the prefix `HETI_MEMORY_MONITOR_`:
+
+```bash
+# Override polling interval
+export HETI_MEMORY_MONITOR_POLLING_INTERVAL_SECONDS=10
+
+# Disable file logging
+export HETI_MEMORY_MONITOR_LOGGING_FILE_ENABLED=false
+```
+
+## Integration with Heticontrol.py
+
+The Memory Monitor is designed to integrate seamlessly with Heticontrol.py. Here's how to add it to your control panel:
+
+```python
+# In heticontrol.py or similar file
+from agent.memory_monitor import MemoryMonitor
+
+class HetiControl:
+    def __init__(self):
+        # Other initialization
+        self.memory_monitor = MemoryMonitor()
+        
+    def start_memory_monitor(self, config_override=None):
+        """Start the memory monitor with optional configuration overrides."""
+        return self.memory_monitor.start(config_override)
+        
+    def stop_memory_monitor(self, wait_for_completion=True):
+        """Stop the memory monitor."""
+        return self.memory_monitor.stop(wait_for_completion)
+        
+    def get_memory_monitor_status(self):
+        """Get the current status of the memory monitor."""
+        return self.memory_monitor.get_status()
+```
+
+## Event Logs
+
+Memory events are logged in JSON format to the configured event log file (default: `logs/memory_events/memory_events.jsonl`).
+
+### Example Event Log Entry
+
+```json
+{
+  "event_id": "550e8400-e29b-41d4-a716-446655440000",
+  "event_type": "memory.created",
+  "timestamp": "2023-08-10T14:35:22.123Z",
+  "memory_id": "550e8400-e29b-41d4-a716-446655440001",
+  "user_id": "user-123",
+  "app_id": "app-456",
+  "content_summary": "This is a sample memory content...",
+  "categories": ["work", "meeting"],
+  "created_at": "2023-08-10T14:35:21.000Z",
+  "details": {
+    "metadata": {"importance": "high"},
+    "state": "active",
+    "app_name": "heti"
+  },
+  "source": "polling",
+  "version": "1.0",
+  "monitor_id": "550e8400-e29b-41d4-a716-446655440002"
+}
+```
+
+## Status Monitoring
+
+The Memory Monitor writes its status to a JSON file at `logs/memory_monitor_status.json`, which can be used for monitoring and dashboard integration.
+
+```json
+{
+  "monitor_id": "550e8400-e29b-41d4-a716-446655440000",
+  "running": true,
+  "start_time": "2023-08-10T14:30:00.000Z",
+  "uptime_seconds": 300,
+  "events_processed": 42,
+  "events_by_type": {
+    "memory.created": 15,
+    "memory.updated": 20,
+    "memory.deleted": 5,
+    "memory.accessed": 0,
+    "embedding.started": 1,
+    "embedding.completed": 1,
+    "memory.error": 0,
+    "memory.batch_operation": 0
+  },
+  "last_event_time": "2023-08-10T14:35:00.000Z",
+  "last_event_type": "memory.updated",
+  "last_poll_time": "2023-08-10T14:35:05.000Z",
+  "last_error": null,
+  "last_error_time": null,
+  "consecutive_errors": 0,
+  "health": "OK"
+}
+```
+
+## Error Handling
+
+The monitor automatically handles various error conditions:
+
+1. **Transient errors**: Retries with exponential backoff
+2. **Persistent errors**: Logs alerts and temporarily increases polling interval
+3. **Clock skew**: Uses timestamp buffer to avoid missing events due to clock differences
+4. **Duplicate events**: Deduplicates events to prevent double-logging
+
+## Testing
+
+The Memory Monitor is designed to be fully testable with both unit and integration tests. 
+
+For examples, see the test files in `tests/`:
+- `tests/test_memory_monitor.py` - Unit tests
+- `tests/test_memory_monitor_integration.py` - Integration tests
+
+## Troubleshooting
+
+### Common Issues
+
+1. **No events detected**: Check API connectivity and that your OpenMemory API is running
+2. **"Monitor not running" errors**: Ensure you've called `start()` before other operations
+3. **Permission errors on log files**: Check directory permissions for logs/memory_events/
+
+### Debugging
+
+Enable DEBUG level logging to see more detailed information:
+
+```python
+monitor = MemoryMonitor()
+# Override logging level just for console
+monitor.config["logging"]["console_level"] = "DEBUG"
+monitor.start()
+```
+
+## For More Information
+
+See the full specification at `.cursor/memory_monitor_spec.mdc` for detailed design information. 

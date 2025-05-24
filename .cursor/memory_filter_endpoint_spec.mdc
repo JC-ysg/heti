@@ -1,0 +1,254 @@
+# Memory Filter Endpoint Specification
+
+## Endpoint Overview
+**Route**: `POST /api/v1/memories/filter`  
+**Purpose**: Accepts complex filter objects for searching memories by multiple fields, logical operators, ranges, metadata, and other advanced criteria to enable sophisticated memory querying for agent reasoning and user support.
+
+## Request Structure
+
+### Required Parameters
+- **filter** (`Dict[str, Any]`): Complex filter object containing search criteria
+
+### Filter Object Structure
+```json
+{
+  "user_id": "string",              // Required: User identifier
+  "conditions": [                   // Optional: Array of filter conditions
+    {
+      "field": "string",            // Field to filter on (content, metadata, categories, etc.)
+      "operator": "string",         // Comparison operator (eq, ne, like, in, gte, lte, between)
+      "value": "any",               // Value to compare against
+      "logical_operator": "string"  // Optional: AND/OR for multiple conditions (default: AND)
+    }
+  ],
+  "date_range": {                   // Optional: Date filtering
+    "from": "integer",              // Unix timestamp
+    "to": "integer"                 // Unix timestamp
+  },
+  "categories": ["string"],         // Optional: Array of category names to filter by
+  "metadata_filters": {             // Optional: Key-value pairs for metadata filtering
+    "key": "value"
+  },
+  "content_search": {               // Optional: Text search configuration
+    "query": "string",              // Search query
+    "fuzzy": "boolean",             // Enable fuzzy matching (default: false)
+    "case_sensitive": "boolean"     // Case sensitive search (default: false)
+  },
+  "sort": {                         // Optional: Sorting configuration
+    "field": "string",              // Field to sort by (created_at, updated_at, content, etc.)
+    "direction": "string"           // asc or desc (default: desc)
+  },
+  "pagination": {                   // Optional: Pagination settings
+    "page": "integer",              // Page number (default: 1)
+    "size": "integer"               // Results per page (default: 10, max: 100)
+  }
+}
+```
+
+### Supported Filter Operators
+- `eq`: Equals
+- `ne`: Not equals  
+- `like`: String contains (case-insensitive)
+- `ilike`: String contains (case-insensitive, alias for like)
+- `in`: Value in array
+- `not_in`: Value not in array
+- `gte`: Greater than or equal
+- `lte`: Less than or equal
+- `between`: Between two values (requires array of 2 values)
+- `exists`: Field exists (value ignored)
+- `not_exists`: Field does not exist (value ignored)
+
+### Supported Filter Fields
+- `content`: Memory text content
+- `categories`: Memory categories
+- `metadata.*`: Any metadata field (dot notation supported)
+- `created_at`: Creation timestamp
+- `updated_at`: Last update timestamp
+- `state`: Memory state (active, archived, deleted)
+- `app_name`: Application name
+
+## Response Structure
+
+### Success Response (200)
+```json
+{
+  "memories": [
+    {
+      "id": "uuid",
+      "user_id": "string",
+      "app_id": "uuid",
+      "content": "string",
+      "metadata_": {},
+      "state": "string",
+      "created_at": "string",
+      "updated_at": "string", 
+      "categories": ["string"],
+      "app_name": "string"
+    }
+  ],
+  "pagination": {
+    "total": "integer",
+    "page": "integer", 
+    "size": "integer",
+    "pages": "integer"
+  },
+  "filter_summary": {
+    "conditions_applied": "integer",
+    "execution_time_ms": "float",
+    "query_complexity": "string"
+  }
+}
+```
+
+### Empty Result Response (200)
+```json
+{
+  "memories": [],
+  "pagination": {
+    "total": 0,
+    "page": 1,
+    "size": 10, 
+    "pages": 0
+  },
+  "filter_summary": {
+    "conditions_applied": 0,
+    "execution_time_ms": 0.5,
+    "query_complexity": "simple"
+  }
+}
+```
+
+## Error Codes
+
+### 400 Bad Request
+- Invalid filter structure
+- Unsupported operator
+- Invalid field name
+- Malformed JSON
+
+**Example Response:**
+```json
+{
+  "detail": "Invalid filter operator 'invalid_op' for field 'content'"
+}
+```
+
+### 422 Validation Error  
+- Missing required user_id
+- Invalid data types
+- Invalid pagination parameters
+- Invalid date range
+
+**Example Response:**
+```json
+{
+  "detail": [
+    {
+      "loc": ["body", "filter", "user_id"],
+      "msg": "field required",
+      "type": "value_error.missing"
+    }
+  ]
+}
+```
+
+### 429 Too Many Requests
+- Rate limiting exceeded
+- Too many complex queries
+
+**Example Response:**
+```json
+{
+  "detail": "Query rate limit exceeded. Please wait before making complex filter requests."
+}
+```
+
+### 500 Internal Server Error
+- Database connection error
+- Query execution timeout
+- Unexpected server error
+
+**Example Response:**
+```json
+{
+  "detail": "Internal server error occurred while processing filter request"
+}
+```
+
+## Edge Cases
+
+### Invalid Filter Object
+- **Case**: Empty filter object or missing user_id
+- **Behavior**: Return 422 validation error
+- **Logging**: Log validation failure with details
+
+### Complex Query Performance
+- **Case**: Filter with >10 conditions or complex metadata queries
+- **Behavior**: Apply query timeout (30s), return 429 if too complex
+- **Logging**: Log query complexity and execution time
+
+### Large Result Sets
+- **Case**: Filter would return >1000 results
+- **Behavior**: Enforce pagination, max 100 results per page
+- **Logging**: Log result count and pagination applied
+
+### Invalid Field References
+- **Case**: Filter references non-existent fields
+- **Behavior**: Return 400 error with field name details
+- **Logging**: Log invalid field reference attempts
+
+### Conflicting Conditions
+- **Case**: Contradictory filter conditions (e.g., content eq "A" AND content eq "B")
+- **Behavior**: Process as written, return empty result if no matches
+- **Logging**: Log condition conflicts detected
+
+### Memory State Filtering
+- **Case**: Filter includes deleted memories
+- **Behavior**: Only return active/archived memories unless explicitly requested
+- **Logging**: Log state filter applications
+
+## Performance Notes
+
+### Query Optimization
+- Simple filters (single condition) execute in <100ms
+- Complex filters (multiple conditions) may take up to 5s
+- Metadata filters require additional joins and may be slower
+- Date range filters are optimized with indexed timestamps
+
+### Caching Strategy
+- Identical filter requests cached for 5 minutes
+- Cache key includes user_id and filter hash
+- Cache invalidated on memory updates for the user
+
+### Rate Limiting
+- Max 100 filter requests per minute per user
+- Complex queries (>5 conditions) count as 3 requests
+- Metadata queries count as 2 requests
+
+## Implementation Requirements
+
+### Logging Requirements
+- Log all filter requests with full filter object
+- Log execution time and result count
+- Log performance warnings for slow queries (>2s)
+- Log cache hit/miss information
+- Log rate limiting events
+
+### Validation Requirements
+- Validate filter structure before processing
+- Sanitize all string inputs to prevent injection
+- Validate operator-value compatibility
+- Enforce pagination limits
+
+### Security Requirements
+- Filter by user_id to prevent data leakage
+- Sanitize metadata field references
+- Rate limit complex queries to prevent DoS
+- Log suspicious query patterns
+
+## Tech Stack
+- **Framework**: FastAPI/Starlette
+- **Database**: PostgreSQL with SQLAlchemy ORM
+- **Caching**: Redis for query result caching
+- **Validation**: Pydantic models for request validation
+- **Logging**: Structured JSON logging with correlation IDs 

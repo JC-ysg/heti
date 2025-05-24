@@ -1,0 +1,51 @@
+2025-05-23 23:21:05,717 - memory_monitor - INFO - Log file configured at examples/logs/monitor.log
+2025-05-23 23:21:05,717 - memory_monitor - DEBUG - Logging configured
+2025-05-23 23:21:05,717 - memory_monitor - INFO - Memory Monitor initialized with ID: 577cd0a3-adb7-462e-b586-99d330abbd48
+2025-05-23 23:21:05,718 - memory_monitor - INFO - Polling loop started
+2025-05-23 23:21:05,718 - memory_monitor - INFO - Memory Monitor started with ID: 577cd0a3-adb7-462e-b586-99d330abbd48
+2025-05-23 23:21:05,718 - memory_monitor - INFO - Performing bootstrap poll...
+2025-05-23 23:21:05,718 - memory_monitor - INFO - Bootstrap poll complete. Tracking 5 existing memories
+2025-05-23 23:21:05,718 - memory_monitor - DEBUG - Polling for events since 2025-05-24T06:16:04.717774+00:00
+2025-05-23 23:21:05,719 - memory_monitor - DEBUG - Status written to logs/memory_monitor_status.json
+2025-05-23 23:21:05,719 - memory_monitor - INFO - Memory event: memory.updated - Memory ID: 915b9ce4-737d-4b03-a872-053759cc48f8
+2025-05-23 23:21:05,720 - memory_monitor - INFO - Detected memory update: 915b9ce4-737d-4b03-a872-053759cc48f8
+2025-05-23 23:21:05,720 - memory_monitor - INFO - Memory event: memory.updated - Memory ID: 180e2deb-abbf-4b19-a5fa-d811d1ff82e9
+2025-05-23 23:21:05,721 - memory_monitor - INFO - Detected memory update: 180e2deb-abbf-4b19-a5fa-d811d1ff82e9
+2025-05-23 23:21:05,721 - memory_monitor - INFO - Memory event: memory.updated - Memory ID: 998788be-11d8-4401-bc93-86da06ae2f5f
+2025-05-23 23:21:05,721 - memory_monitor - INFO - Detected memory update: 998788be-11d8-4401-bc93-86da06ae2f5f
+2025-05-23 23:21:05,722 - memory_monitor - INFO - Memory event: memory.updated - Memory ID: ed48d693-56ce-4c97-aa25-66d707589a88
+2025-05-23 23:21:05,722 - memory_monitor - INFO - Detected memory update: ed48d693-56ce-4c97-aa25-66d707589a88
+2025-05-23 23:21:05,723 - memory_monitor - INFO - Memory event: memory.updated - Memory ID: 9e7bdc74-cf43-499b-a0b8-0e1ee694f63d
+2025-05-23 23:21:05,723 - memory_monitor - INFO - Detected memory update: 9e7bdc74-cf43-499b-a0b8-0e1ee694f63d
+2025-05-23 23:21:05,723 - memory_monitor - DEBUG - Embedding operations polling not implemented - requires specific API endpoint
+2025-05-23 23:21:05,723 - memory_monitor - DEBUG - Status written to logs/memory_monitor_status.json
+2025-05-23 23:21:05,723 - memory_monitor - DEBUG - Waiting 1 seconds until next poll
+2025-05-23 23:21:06,735 - memory_monitor - DEBUG - Polling for events since 2025-05-24T06:21:04.718969+00:00
+2025-05-23 23:21:06,735 - memory_monitor - DEBUG - Skipping duplicate memory.updated event for 915b9ce4-737d-4b03-a872-053759cc48f8
+2025-05-23 23:21:06,735 - memory_monitor - DEBUG - Skipping duplicate memory.updated event for 180e2deb-abbf-4b19-a5fa-d811d1ff82e9
+2025-05-23 23:21:06,735 - memory_monitor - DEBUG - Skipping duplicate memory.updated event for 998788be-11d8-4401-bc93-86da06ae2f5f
+2025-05-23 23:21:06,735 - memory_monitor - DEBUG - Skipping duplicate memory.updated event for ed48d693-56ce-4c97-aa25-66d707589a88
+2025-05-23 23:21:06,735 - memory_monitor - DEBUG - Skipping duplicate memory.updated event for 9e7bdc74-cf43-499b-a0b8-0e1ee694f63d
+2025-05-23 23:21:06,735 - memory_monitor - DEBUG - Embedding operations polling not implemented - requires specific API endpoint
+2025-05-23 23:21:06,736 - memory_monitor - DEBUG - Status written to logs/memory_monitor_status.json
+2025-05-23 23:21:06,736 - memory_monitor - DEBUG - Waiting 1 seconds until next poll
+2025-05-23 23:21:07,720 - memory_monitor - DEBUG - Polling for memory deletion events
+2025-05-23 23:21:07,720 - memory_monitor - DEBUG - Found 4 memories in current API response
+2025-05-23 23:21:07,720 - memory_monitor - DEBUG - Detected 1 potentially deleted memories
+2025-05-23 23:21:07,720 - memory_monitor - INFO - Memory event: deletion - Memory ID: 915b9ce4-737d-4b03-a872-053759cc48f8
+2025-05-23 23:21:07,720 - memory_monitor - INFO - Detected memory deletion: 915b9ce4-737d-4b03-a872-053759cc48f8
+2025-05-23 23:21:07,722 - memory_monitor - INFO - Stopping Memory Monitor...
+2025-05-23 23:21:07,722 - memory_monitor - INFO - Memory Monitor stopped. Total events processed: 6
+2025-05-23 23:21:07,722 - memory_monitor - DEBUG - Status written to logs/memory_monitor_status.json
+2025-05-23 23:26:26,950 - memory_monitor - INFO - Log file configured at examples/logs/monitor.log
+2025-05-23 23:26:26,950 - memory_monitor - DEBUG - Logging configured
+2025-05-23 23:26:26,950 - memory_monitor - INFO - Memory Monitor initialized with ID: b3ed8d92-7151-4b0d-aac1-d61d774d9146
+2025-05-23 23:26:26,951 - memory_monitor - INFO - Memory event: error - Memory ID: unknown
+2025-05-23 23:26:26,951 - memory_monitor - ERROR - Monitor error: APIError - Failed to connect to memory service
+2025-05-23 23:26:26,952 - memory_monitor - INFO - Memory event: error - Memory ID: unknown
+2025-05-23 23:26:26,952 - memory_monitor - ERROR - Monitor error: ConfigError - Invalid configuration parameter
+2025-05-23 23:26:26,954 - memory_monitor - INFO - Memory event: error - Memory ID: unknown
+2025-05-23 23:26:26,954 - memory_monitor - ERROR - Monitor error: DataError - Failed to process memory data
+2025-05-23 23:26:26,954 - memory_monitor - DEBUG - Skipping duplicate error log for APIError: Failed to connect to memory service
+2025-05-23 23:26:32,056 - memory_monitor - INFO - Memory event: error - Memory ID: unknown
+2025-05-23 23:26:32,056 - memory_monitor - ERROR - Monitor error: APIError - Failed to connect to memory service

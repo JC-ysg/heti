@@ -1,0 +1,434 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Real-Time Memory Monitor Mini-Specification
+
+## Overview
+
+The Real-Time Memory Monitor provides continuous visibility into OpenMemory operations, enabling real-time tracking, logging, and analysis of memory events. This component enhances debugging, provides operational insights, and enables audit trails of all memory operations.
+
+## 1. Event Types to Monitor
+
+### 1.1 Memory Creation Events
+- **Event Type**: `memory.created`
+- **Description**: A new memory has been successfully created in the system
+- **Detection Method**: Poll the API with timestamp filters OR webhook subscription
+- **Key Data Points**: Memory ID, user ID, app ID, content summary, timestamp, categories, metadata
+
+### 1.2 Memory Update Events
+- **Event Type**: `memory.updated`
+- **Description**: An existing memory has been modified
+- **Detection Method**: Poll the API with updated_at filters OR webhook subscription
+- **Key Data Points**: Memory ID, previous version timestamp, new version timestamp, changed fields, user ID
+
+### 1.3 Memory Deletion Events
+- **Event Type**: `memory.deleted`
+- **Description**: A memory has been removed from the system (soft or hard delete)
+- **Detection Method**: Poll with state filter OR dedicated deletion endpoint OR webhook
+- **Key Data Points**: Memory ID, deletion timestamp, deletion type (soft/hard), user ID
+
+### 1.4 Memory Access Events
+- **Event Type**: `memory.accessed`
+- **Description**: A memory has been retrieved or viewed
+- **Detection Method**: Intercept GET requests or poll access logs
+- **Key Data Points**: Memory ID, access timestamp, requesting user/system, access context
+
+### 1.5 Embedding Operations
+- **Event Type**: `embedding.started`, `embedding.completed`
+- **Description**: Track when vector embeddings are generated for memories
+- **Detection Method**: Poll embedding status endpoint OR webhook
+- **Key Data Points**: Memory ID, model used, start/end timestamp, vector dimensions
+
+### 1.6 Error Events
+- **Event Type**: `memory.error`
+- **Description**: Failed operations related to memories
+- **Detection Method**: Monitor API error responses during polling
+- **Key Data Points**: Operation type, error code, error message, affected memory ID, timestamp
+
+### 1.7 Batch Operations
+- **Event Type**: `memory.batch_operation`
+- **Description**: Bulk creation or modification of memories
+- **Detection Method**: Dedicated batch operation endpoint or webhook
+- **Key Data Points**: Operation type, affected memory IDs, success count, failure count
+
+## 2. Event Detection Mechanisms
+
+### 2.1 Polling Strategy
+- **Primary Method**: RESTful API polling using @file(tools/openmemory_client.py)
+- **Polling Interval**: Configurable, default 5 seconds (min 1s, max 60s)
+- **Endpoints Used**:
+  - GET `/api/v1/memories` with timestamp filters for new/updated memories
+  - GET `/api/v1/memories/filter` with custom filters for complex detection
+  - Dedicated endpoints for special events (if available)
+- **Timestamp Tracking**: 
+  - Store last poll timestamp to query only newer records
+  - Use created_at/updated_at fields for efficient filtering
+  - Account for clock skew with configurable buffer (default: 1s)
+
+### 2.2 Event-Driven Integration (Optional/Future)
+- **Webhook Registration**: Support for registering monitor as webhook endpoint
+- **Event Types**: Same as polling events, but delivered in real-time
+- **Authentication**: Secret token validation for webhook security
+- **Fallback**: Use polling as fallback if webhooks fail or are unavailable
+
+### 2.3 Detection Optimization
+- **Fingerprinting**: Generate unique event fingerprints to prevent duplicates
+- **Batching**: Process multiple events in single poll to reduce API load
+- **Pagination**: Support for handling large result sets with cursor-based pagination
+- **Memory Usage**: Only store minimal required data between polls
+
+## 3. Logging and Notification System
+
+### 3.1 Standardized Log Format
+- **Format**: Structured JSON with consistent schema
+- **Core Fields**:
+  ```json
+  {
+    "event_id": "unique-event-id",
+    "event_type": "memory.created",
+    "timestamp": "2023-08-10T14:35:22.123Z",
+    "memory_id": "550e8400-e29b-41d4-a716-446655440000",
+    "user_id": "user-123",
+    "app_id": "app-456",
+    "details": {},
+    "source": "polling|webhook",
+    "version": "1.0"
+  }
+  ```
+- **Log Storage**: 
+  - Primary: Rotating log files in @file(logs/memory_events/)
+  - Configurable retention policy (days, file size, count)
+
+### 3.2 Real-time Output
+- **Console Output**: Configurable verbosity levels for development
+- **Development Mode**: Pretty-printed events with color coding
+- **Production Mode**: Minimal console output unless errors occur
+
+### 3.3 Integration Points
+- **File Watching**: Support for other components to watch log files
+- **Callback API**: Optional callback function registration for direct integration
+- **Event Bus**: Publish to internal event bus if @file(agent/event_bus.py) exists
+- **Dashboard Integration**: Streaming to OpenMemory Dashboard if enabled
+
+### 3.4 Notification System
+- **Severity Levels**: INFO, WARNING, ERROR, CRITICAL
+- **Triggers**: Configurable conditions for notifications
+- **Delivery Methods**: 
+  - Log file (always)
+  - Console (configurable)
+  - Integration with @file(agent/notification_system.py) if available
+
+## 4. Error Handling & Resilience
+
+### 4.1 API Failure Handling
+- **Transient Errors**: Automatic retry with exponential backoff
+  - Initial retry: 1 second
+  - Maximum retry: 30 seconds
+  - Maximum attempts: Configurable, default 3
+- **Persistent Errors**:
+  - Log detailed error information
+  - Temporarily increase polling interval
+  - Alert via configured notification channels
+
+### 4.2 Missed Event Detection
+- **Catch-up Mechanism**: 
+  - On restart, query from last successful timestamp
+  - Configurable look-back window (default: 5 minutes)
+- **Gap Detection**: 
+  - Track event sequence numbers where available
+  - Alert on detected gaps in sequence
+
+### 4.3 Event Deduplication
+- **Fingerprinting Method**: 
+  - Generate hash from memory_id + event_type + operation timestamp
+  - Short-term memory of recent event fingerprints (LRU cache)
+- **Handling Policy**:
+  - Log with "duplicate" flag for debugging
+  - Only process first occurrence for actions
+
+### 4.4 Partial Failure Handling
+- **Batch Processing**: Continue processing valid events when some fail
+- **Graceful Degradation**: Reduce functionality rather than complete failure
+- **Self-Healing**: Automatic recovery when systems return to normal
+
+## 5. Performance & Configuration
+
+### 5.1 Scalability Considerations
+- **Rate Limiting**: 
+  - Respect API rate limits with adaptive polling
+  - Track rate limit headers and adjust automatically
+- **Batch Size**: 
+  - Configurable maximum events per poll (default: 100)
+  - Dynamic adjustment based on system load
+- **Resource Usage**:
+  - Configurable memory limits for event caching
+  - CPU usage throttling in high-load scenarios
+
+### 5.2 Configuration System
+- **Configuration File**: @file(config/memory_monitor.yaml)
+- **Environment Variables**: Override with HETI_MEMORY_MONITOR_* prefixed vars
+- **Dynamic Configuration**: Support for runtime config changes
+- **Core Settings**:
+  ```yaml
+  polling:
+    enabled: true
+    interval_seconds: 5
+    max_batch_size: 100
+    lookback_window_minutes: 5
+  
+  webhooks:
+    enabled: false
+    endpoint: "http://localhost:8000/webhook"
+    secret_token: "${WEBHOOK_SECRET}"
+  
+  logging:
+    file_enabled: true
+    file_path: "logs/memory_events/events.log"
+    console_level: "INFO"
+    file_level: "DEBUG"
+    rotation:
+      max_size_mb: 10
+      backup_count: 5
+  
+  event_types:
+    memory.created: true
+    memory.updated: true
+    memory.deleted: true
+    memory.accessed: false
+    embedding.started: true
+    embedding.completed: true
+    memory.error: true
+    memory.batch_operation: true
+  
+  notifications:
+    error_alert: true
+    error_threshold: 3
+    batch_summary_interval_minutes: 15
+  
+  performance:
+    max_memory_mb: 100
+    cpu_throttle_percent: 80
+  ```
+
+### 5.3 Startup & Shutdown
+- **Clean Startup**: Initialize resources, load config, connect to API
+- **Graceful Shutdown**: Finish processing in-flight events, close logs properly
+- **State Persistence**: Save last processed timestamps for recovery
+
+## 6. Testing Requirements
+
+### 6.1 Unit Testing
+- **Required Coverage**: >90% code coverage
+- **Test File**: @file(tests/test_memory_monitor.py)
+- **Mock Framework**: Use unittest.mock for API simulation
+- **Test Types**:
+  - Configuration parsing
+  - Event detection logic
+  - Fingerprinting and deduplication
+  - Error handling and retries
+  - Log formatting
+
+### 6.2 Integration Testing
+- **Test File**: @file(tests/test_memory_monitor_integration.py)
+- **Components**:
+  - API connectivity with real or mock server
+  - Log file writing and rotation
+  - Event processing end-to-end
+  - Configuration loading
+
+### 6.3 Event Simulation
+- **Test Method**: Generate test events via API calls
+- **Verification**: Confirm detection, logging, processing
+- **Test Scenarios**:
+  - Normal operation
+  - High volume (100+ events)
+  - Error conditions
+  - Duplicate events
+  - Restart recovery
+
+### 6.4 Performance Testing
+- **Benchmark File**: @file(tests/benchmark_memory_monitor.py)
+- **Metrics**:
+  - Events processed per second
+  - CPU/memory usage under load
+  - Recovery time after failure
+
+## 7. Heticontrol.py Integration
+
+### 7.1 Control Panel UI
+- **Component**: Add "Memory Monitor" tab to Heticontrol
+- **Functions**:
+  - Start/stop monitor
+  - View current status and statistics
+  - Configure polling interval and event types
+  - View recent events with filtering
+
+### 7.2 Status Reporting
+- **Metrics Displayed**:
+  - Running status (active/inactive)
+  - Uptime
+  - Events processed (total and by type)
+  - Last event timestamp
+  - Last error (if any)
+  - Current polling interval
+  - API health
+
+### 7.3 Control API
+- **Start Method**: `start_memory_monitor(config_override=None)`
+- **Stop Method**: `stop_memory_monitor(wait_for_completion=True)`
+- **Status Method**: `get_memory_monitor_status()`
+- **Integration**: @file(ui/memory_monitor_panel.py) for UI components
+
+### 7.4 Visual Indicators
+- **Status Icon**: Green (running), Yellow (issues), Red (error), Gray (stopped)
+- **Activity Indicator**: Flashes on new events
+- **Error Display**: Shows last error with details on mouseover
+
+## 8. Security Considerations
+
+### 8.1 Authentication
+- **API Credentials**: Use secure authentication from @file(config/credentials.yaml)
+- **Token Handling**: Never log full tokens or secrets
+
+### 8.2 Data Protection
+- **Sensitive Content**: Truncate or hash sensitive memory content in logs
+- **Personally Identifiable Information (PII)**: Mask or pseudonymize where appropriate
+- **Log Protection**: Ensure logs are not world-readable
+
+### 8.3 Access Control
+- **Monitor Configuration**: Require admin privileges to modify settings
+- **Log Access**: Restrict access to authorized users
+
+## 9. Implementation Dependencies
+
+### 9.1 Required Components
+- @file(tools/openmemory_client.py) for API access
+- @file(logs/) directory for log storage
+- @file(config/) directory for configuration
+
+### 9.2 Optional Integrations
+- @file(agent/event_bus.py) for event distribution
+- @file(agent/notification_system.py) for alerts
+- @file(ui/dashboard.py) for real-time visualization
+
+## 10. Compliance with Heti Project Rules
+
+### 10.1 @project/modularity
+- Component follows clear module boundaries
+- Self-contained with well-defined interfaces
+- Uses existing Heti components properly
+
+### 10.2 @.cursor/specs
+- This document serves as the required specification
+- Implementation must reference back to this specification
+- Any deviations require spec updates first
+
+### 10.3 @tests
+- Test-first development required
+- Tests must cover all functionality before implementation
+- Test-driven approach for all features
+
+### 10.4 @project/atomicity
+- Implementation should follow single-responsibility principle
+- Each component should be independently testable
+- Changes should be atomic and incremental
+
+### 10.5 @logs
+- Full traceability for all monitor operations
+- The monitor itself must log its own operations
+- All actions must be attributable and auditable
+
+### 10.6 @agent/permission_escalation
+- Configuration changes require explicit permission
+- Starting/stopping requires appropriate authorization
+- Critical actions logged with reason
+
+### 10.7 @config/context
+- Monitor respects current context and mode
+- Adapts behavior based on environment
+- Respects system-wide settings
+
+### 10.8 @agent/explainability_log
+- Monitor decisions are logged with rationale
+- Error handling includes explanation
+- Recovery actions documented
+
+### 10.9 @agent/self_review
+- Monitor tracks and reports on its own performance
+- Self-adjusts based on conditions
+- Provides insights for improvement
+
+### 10.10 @agent/goal_manager
+- Aligns with overall system goals
+- Prioritizes based on configuration
+- Respects resource limitations
+
+## Memory Deletion Detection
+The Memory Monitor now fully supports detection and logging of memory deletion events using the following approach:
+
+1. Tracking a set of known memory IDs from previous API calls
+2. Polling the OpenMemory API for the current set of memory IDs
+3. Identifying potentially deleted memories by finding IDs present in the known set but missing from the current set
+4. Verifying each potential deletion by attempting to directly retrieve the memory
+5. Logging confirmed deletions as events with the "deletion" event type
+6. Maintaining a deduplication cache to prevent duplicate deletion events
+
+### Key Components
+- `poll_memory_deletions()`: Main method for detecting deletion events
+- `_create_memory_deletion_event()`: Helper method for creating and logging deletion events
+- `deletion_deduplication_cache`: Set used for deduplication of deletion events
+
+### Log Format
+```json
+{
+  "event_type": "deletion",
+  "timestamp": "2023-08-10T14:35:22.123Z",
+  "memory_id": "550e8400-e29b-41d4-a716-446655440000",
+  "details": {
+    "detection_method": "id_comparison"
+  },
+  "source": "MemoryMonitor",
+  "run_id": "86c45e1a-cd87-42e9-9afa-28b9bea27c62"
+}
+```
+
+## Error Event Logging
+The Memory Monitor now fully supports the detection and logging of error events through the `log_monitor_error` method. This system provides:
+
+1. Structured error logging with detailed context
+2. Time-based deduplication to prevent log spam
+3. Configurable deduplication window (default: 60 seconds)
+4. Error categorization by type (APIError, NetworkError, ConfigError, etc.)
+5. Rich context capture for debugging and analysis
+
+### Key Components
+- `log_monitor_error()`: Main method for logging error events
+- `_generate_error_fingerprint()`: Helper method for creating deduplication fingerprints
+- `error_deduplication_cache`: Dictionary used for deduplication of error events with timestamps
+
+### Log Format
+```json
+{
+  "event_type": "error",
+  "timestamp": "2023-08-10T14:35:22.123Z",
+  "error_type": "APIError",
+  "message": "Failed to connect to API endpoint",
+  "context": {
+    "endpoint": "/api/memories",
+    "status_code": 500
+  },
+  "source": "MemoryMonitor",
+  "run_id": "86c45e1a-cd87-42e9-9afa-28b9bea27c62"
+}
+```
+
+### Configuration Options
+- `error.deduplication_window_seconds`: Time window for error deduplication (default: 60)
+
+## Next Steps
+1. Implement memory access tracking
+2. Implement embedding operation monitoring
+3. Develop UI components for monitoring visualization
+4. Implement webhook notifications for critical events 

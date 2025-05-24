@@ -1,0 +1,98 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Hēti Project Rules
+
+- All project structure, development, and reasoning must follow these rules.
+- You can @ files, @folders, or @git references for precision.
+- Markdown is allowed, but not required.
+
+# Hēti Project Rules
+See @file(HETI_PROJECT_OVERVIEW.mdc) for project purpose, expectations, and background.
+
+---
+
+## 1. @project/modularity – Modular Code Only
+All code must be organized in explicit, self-contained modules:
+- agent/
+- tools/
+- ui/
+- memory/
+- perception/
+- config/
+- logs/
+New files must include a docstring stating their purpose and integration points.
+
+---
+
+## 2. @.cursor/specs – No Code Without Spec
+No file or function is to be generated, changed, or reviewed without a clear, written mini-spec covering:
+- Purpose
+- Inputs/outputs
+- Tech stack
+- Limits/behavior
+Specs live in `.cursor/` or as docstrings.
+
+---
+
+## 3. @tests – Test-First Development
+Tests must be written (or locked) before code generation.
+- All new modules require unit and integration tests.
+- Code is only “done” when all relevant tests pass.
+
+---
+
+## 4. @project/atomicity – Single-Focus Workflow
+Work is always done one file, class, or function at a time.
+- Each commit covers only one change.
+- No big merges or cross-cutting edits.
+
+---
+
+## 5. @logs – Full Traceability
+Every output, state change, and error must be logged with:
+- Timestamp
+- Module
+- Summary of input/output
+- Reasoning/confidence (if applicable)
+All edits and failures must be reviewable. Lessons learned go in `.cursor/failure_cases.md`.
+
+---
+
+## 6. @agent/permission_escalation.py – Safety on All Sensitive Actions
+All critical actions (delete, write, API, system-level) require explicit user permission via UI, voice, or key.
+- No silent destructive behavior.
+- All escalation events must be logged.
+
+---
+
+## 7. @config/context – Adaptive, Context-Aware Behavior
+Agent must always respect context (`mode_lock.yaml`, `autonomy_levels.yaml`).
+- On mode or context change, agent adapts instantly.
+- Behavior and output must match user’s current state.
+
+---
+
+## 8. @agent/explainability_log.py – Reasoning is Always Logged
+Every significant decision/action must be accompanied by a natural-language explanation.
+- Logs must be queryable and linked to the triggering test or context.
+
+---
+
+## 9. @agent/self_review.py – Continuous Self-Improvement
+Agent must self-review regularly (at least weekly):
+- Summarize failures, inefficiencies, and corrections.
+- Adapt persona and knowledge from real usage data.
+- Improvements logged and tracked in `.cursor/`.
+
+---
+
+## 10. @agent/goal_manager.py – Strict User Alignment
+No action may occur unless it aligns to a specific user goal, config, or memory state.
+- All ambiguous or unaligned instructions must be clarified or deferred.
+- User intent is always prioritized over default or autonomous behavior.
+
+---
+

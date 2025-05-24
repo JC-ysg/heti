@@ -1,0 +1,2 @@
+# This file ensures the logs/memory_events directory is preserved in git
+# The directory is needed for storing memory event logs 

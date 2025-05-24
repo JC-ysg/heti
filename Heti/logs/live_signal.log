@@ -1,0 +1,467 @@
+[2025-05-23T05:07:33Z] INFO – monitor_embedder – BEGIN DEMO SEQUENCE at 2025-05-23T12:07:33.150883Z
+[2025-05-23T05:07:33Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:33.449312Z", "message": "Heartbeat 1"}
+[2025-05-23T05:07:34Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:34.465399Z", "message": "Heartbeat 2"}
+[2025-05-23T05:07:35Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:35.478472Z", "message": "Heartbeat 3"}
+[2025-05-23T05:07:36Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:36.493215Z", "message": "Heartbeat 4"}
+[2025-05-23T05:07:37Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:37.504469Z", "message": "Heartbeat 5"}
+[2025-05-23T05:07:38Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:38.517043Z", "message": "Heartbeat 6"}
+[2025-05-23T05:07:39Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:39.530159Z", "message": "Heartbeat 7"}
+[2025-05-23T05:07:40Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:40.543540Z", "message": "Heartbeat 8"}
+[2025-05-23T05:07:41Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:41.551469Z", "message": "Heartbeat 9"}
+[2025-05-23T05:07:42Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:42.566846Z", "message": "Heartbeat 10"}
+[2025-05-23T05:07:43Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:43.576649Z", "message": "Heartbeat 11"}
+[2025-05-23T05:07:44Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:44.589842Z", "message": "Heartbeat 12"}
+[2025-05-23T05:07:45Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:45.604214Z", "message": "Heartbeat 13"}
+[2025-05-23T05:07:46Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:46.615063Z", "message": "Heartbeat 14"}
+[2025-05-23T05:07:47Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:47.626486Z", "message": "Heartbeat 15"}
+[2025-05-23T05:07:48Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:48.639414Z", "message": "Heartbeat 16"}
+[2025-05-23T05:07:49Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:49.640632Z", "message": "Heartbeat 17"}
+[2025-05-23T05:07:50Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:50.654533Z", "message": "Heartbeat 18"}
+[2025-05-23T05:07:51Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:51.666583Z", "message": "Heartbeat 19"}
+[2025-05-23T05:07:52Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:52.677948Z", "message": "Heartbeat 20"}
+[2025-05-23T05:07:53Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:53.689366Z", "message": "Heartbeat 21"}
+[2025-05-23T05:07:54Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:54.701989Z", "message": "Heartbeat 22"}
+[2025-05-23T05:07:55Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:55.711890Z", "message": "Heartbeat 23"}
+[2025-05-23T05:07:56Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:56.713945Z", "message": "Heartbeat 24"}
+[2025-05-23T05:07:57Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:57.722926Z", "message": "Heartbeat 25"}
+[2025-05-23T05:07:58Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:58.736415Z", "message": "Heartbeat 26"}
+[2025-05-23T05:07:59Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:07:59.747038Z", "message": "Heartbeat 27"}
+[2025-05-23T05:08:00Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:08:00.760550Z", "message": "Heartbeat 28"}
+[2025-05-23T05:08:01Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:08:01.768451Z", "message": "Heartbeat 29"}
+[2025-05-23T05:08:02Z] INFO – monitor_embedder – {"timestamp": "2025-05-23T12:08:02.777297Z", "message": "Heartbeat 30"}
+[2025-05-23T05:20:26Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T12:20:26.348883Z
+[2025-05-23T05:20:29Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 500 Internal Server Error"
+[2025-05-23T05:27:14Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T12:27:14.361166Z
+[2025-05-23T05:27:15Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 500 Internal Server Error"
+[2025-05-23T05:37:45Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T12:37:45.360089Z
+[2025-05-23T05:37:46Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 500 Internal Server Error"
+[2025-05-23T05:41:52Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T12:41:52.949933Z
+[2025-05-23T05:41:55Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 500 Internal Server Error"
+[2025-05-23T05:56:04Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T12:56:04.198427Z
+[2025-05-23T05:56:07Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 500 Internal Server Error"
+[2025-05-23T06:01:15Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:01:15.105920Z
+[2025-05-23T06:01:23Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:01:23.992143Z
+[2025-05-23T06:01:24Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:01:24Z] INFO – monitor_embedder – \u2714 Stored memory  in 579836µs
+[2025-05-23T06:01:29Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:01:29.121159Z
+[2025-05-23T06:01:31Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:01:31Z] INFO – monitor_embedder – \u2714 Stored memory  in 2570746µs
+[2025-05-23T06:01:32Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:01:32Z] INFO – monitor_embedder – \u2714 Stored memory  in 2554320µs
+[2025-05-23T06:01:32Z] INFO – monitor_embedder – LIVE MONITOR COMPLETE
+[2025-05-23T06:01:40Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:01:40Z] INFO – monitor_embedder – \u2714 Stored memory  in 2606543µs
+[2025-05-23T06:01:47Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:01:47Z] INFO – monitor_embedder – \u2714 Stored memory  in 2601853µs
+[2025-05-23T06:01:55Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:01:55Z] INFO – monitor_embedder – \u2714 Stored memory  in 2605723µs
+[2025-05-23T06:02:02Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:02:02Z] INFO – monitor_embedder – \u2714 Stored memory  in 2596674µs
+[2025-05-23T06:02:10Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:02:10Z] INFO – monitor_embedder – \u2714 Stored memory  in 2568691µs
+[2025-05-23T06:02:18Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:02:18Z] INFO – monitor_embedder – \u2714 Stored memory  in 2598982µs
+[2025-05-23T06:02:25Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:02:25Z] INFO – monitor_embedder – \u2714 Stored memory  in 2587727µs
+[2025-05-23T06:02:33Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:02:33Z] INFO – monitor_embedder – \u2714 Stored memory  in 2544480µs
+[2025-05-23T06:02:40Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:02:40Z] INFO – monitor_embedder – \u2714 Stored memory  in 2591867µs
+[2025-05-23T06:02:48Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:02:48Z] INFO – monitor_embedder – \u2714 Stored memory  in 2539883µs
+[2025-05-23T06:02:55Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:02:55Z] INFO – monitor_embedder – \u2714 Stored memory  in 2557785µs
+[2025-05-23T06:03:16Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:03:16.368994Z
+[2025-05-23T06:03:17Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:03:17Z] INFO – monitor_embedder – \u2714 Stored memory  in 569602µs
+[2025-05-23T06:03:24Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:03:24Z] INFO – monitor_embedder – \u2714 Stored memory  in 2588970µs
+[2025-05-23T06:03:32Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:03:32Z] INFO – monitor_embedder – \u2714 Stored memory  in 2598191µs
+[2025-05-23T06:03:40Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:03:40Z] INFO – monitor_embedder – \u2714 Stored memory  in 2591815µs
+[2025-05-23T06:03:47Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:03:47Z] INFO – monitor_embedder – \u2714 Stored memory  in 2558057µs
+[2025-05-23T06:03:55Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:03:55Z] INFO – monitor_embedder – \u2714 Stored memory  in 2564900µs
+[2025-05-23T06:04:02Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:04:02Z] INFO – monitor_embedder – \u2714 Stored memory  in 2539556µs
+[2025-05-23T06:04:10Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:04:10Z] INFO – monitor_embedder – \u2714 Stored memory  in 2535040µs
+[2025-05-23T06:04:17Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:04:17Z] INFO – monitor_embedder – \u2714 Stored memory  in 2564257µs
+[2025-05-23T06:04:25Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:04:25Z] INFO – monitor_embedder – \u2714 Stored memory  in 2539303µs
+[2025-05-23T06:04:32Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:04:32Z] INFO – monitor_embedder – \u2714 Stored memory  in 2542657µs
+[2025-05-23T06:04:40Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:04:40Z] INFO – monitor_embedder – \u2714 Stored memory  in 2557458µs
+[2025-05-23T06:04:48Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:04:48Z] INFO – monitor_embedder – \u2714 Stored memory  in 2522512µs
+[2025-05-23T06:04:55Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:04:55Z] INFO – monitor_embedder – \u2714 Stored memory  in 2543664µs
+[2025-05-23T06:05:03Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:05:03Z] INFO – monitor_embedder – \u2714 Stored memory  in 2556442µs
+[2025-05-23T06:05:10Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:05:10Z] INFO – monitor_embedder – \u2714 Stored memory  in 2557012µs
+[2025-05-23T06:05:18Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:05:18Z] INFO – monitor_embedder – \u2714 Stored memory  in 2537412µs
+[2025-05-23T06:05:25Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:05:25Z] INFO – monitor_embedder – \u2714 Stored memory  in 2558212µs
+[2025-05-23T06:05:38Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:05:38.934348Z
+[2025-05-23T06:05:55Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:05:55.815951Z
+[2025-05-23T06:06:02Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:06:02Z] INFO – monitor_embedder – \u2714 Stored memory  in 6120405µs
+[2025-05-23T06:06:28Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:06:28Z] INFO – monitor_embedder – \u2714 Stored memory  in 21525719µs
+[2025-05-23T06:06:44Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:06:44Z] INFO – monitor_embedder – \u2714 Stored memory  in 10206185µs
+[2025-05-23T06:06:59Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:06:59Z] INFO – monitor_embedder – \u2714 Stored memory  in 10147364µs
+[2025-05-23T06:07:14Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:07:14Z] INFO – monitor_embedder – \u2714 Stored memory  in 10170648µs
+[2025-05-23T06:11:24Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:11:24.207798Z
+[2025-05-23T06:12:20Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:12:20.166949Z
+[2025-05-23T06:13:02Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:13:02.648158Z
+[2025-05-23T06:13:57Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:13:57.860362Z
+[2025-05-23T06:14:44Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:14:44.835371Z
+[2025-05-23T06:14:45Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 500 Internal Server Error"
+[2025-05-23T06:15:31Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:15:31.769945Z
+[2025-05-23T06:15:32Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 500 Internal Server Error"
+[2025-05-23T06:17:21Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:17:21.689606Z
+[2025-05-23T06:17:22Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 500 Internal Server Error"
+[2025-05-23T06:19:16Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:19:16.958392Z
+[2025-05-23T06:19:18Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 500 Internal Server Error"
+[2025-05-23T06:20:30Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:20:30.839647Z
+[2025-05-23T06:20:32Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 500 Internal Server Error"
+[2025-05-23T06:22:25Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:22:25.129526Z
+[2025-05-23T06:22:30Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:22:30Z] INFO – monitor_embedder – \u2714 Stored memory  in 4852662µs
+[2025-05-23T06:22:49Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:22:49.473271Z
+[2025-05-23T06:22:58Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:22:58Z] INFO – monitor_embedder – \u2714 Stored memory  in 8566081µs
+[2025-05-23T06:23:17Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:23:17Z] INFO – monitor_embedder – \u2714 Stored memory 0a84f7fa-26dc-4bde-98a5-b7439e824fae in 14140971µs
+[2025-05-23T06:26:34Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:26:34.767308Z
+[2025-05-23T06:28:11Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:28:11.506312Z
+[2025-05-23T06:28:14Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:28:14Z] INFO – monitor_embedder – \u2714 Stored memory 69954f1e-3e1f-4ad4-8727-417114749e20 in 2858665µs
+[2025-05-23T06:28:15Z] INFO – monitor_embedder – LIVE MONITOR COMPLETE
+[2025-05-23T06:29:33Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:29:33.263629Z
+[2025-05-23T06:29:36Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:29:36Z] INFO – monitor_embedder – \u2714 Stored memory fee9ffe3-d5ce-465f-b860-83f72f11be4d in 2959706µs
+[2025-05-23T06:29:37Z] INFO – monitor_embedder – LIVE MONITOR COMPLETE
+[2025-05-23T06:30:02Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:30:02.011323Z
+[2025-05-23T06:30:08Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:30:08Z] INFO – monitor_embedder – \u2714 Stored memory  in 6090909µs
+[2025-05-23T06:30:09Z] INFO – monitor_embedder – LIVE MONITOR COMPLETE
+[2025-05-23T06:30:18Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:30:18.098782Z
+[2025-05-23T06:30:21Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:30:21Z] INFO – monitor_embedder – \u2714 Stored memory d7fbfc7e-3603-4c80-a19a-0e42f02664e1 in 2823779µs
+[2025-05-23T06:30:22Z] INFO – monitor_embedder – LIVE MONITOR COMPLETE
+[2025-05-23T06:32:58Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:32:58.192409Z
+[2025-05-23T06:33:04Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:33:04Z] INFO – monitor_embedder – \u2714 Stored memory  in 6186042µs
+[2025-05-23T06:33:19Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:33:19Z] INFO – monitor_embedder – \u2714 Stored memory  in 9964636µs
+[2025-05-23T06:33:30Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:33:30Z] INFO – monitor_embedder – \u2714 Stored memory  in 6034915µs
+[2025-05-23T06:33:38Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:33:38Z] INFO – monitor_embedder – \u2714 Stored memory 970ef3a0-4092-44ca-8252-524d15db4a1d in 2744929µs
+[2025-05-23T06:33:53Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:33:53Z] INFO – monitor_embedder – \u2714 Stored memory  in 10211258µs
+[2025-05-23T06:34:04Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:34:04Z] INFO – monitor_embedder – \u2714 Stored memory  in 5843213µs
+[2025-05-23T06:34:35Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:34:35Z] INFO – monitor_embedder – \u2714 Stored memory 4a751caa-9f0f-4aac-b51c-9524066a9de1 in 25837622µs
+[2025-05-23T06:35:54Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:35:54.979266Z
+[2025-05-23T06:36:12Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:36:12Z] INFO – monitor_embedder – \u2714 Stored memory  in 17523492µs
+[2025-05-23T06:36:13Z] INFO – monitor_embedder – LIVE MONITOR COMPLETE
+[2025-05-23T06:38:29Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:38:29.836622Z
+[2025-05-23T06:39:01Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:39:01.015873Z
+[2025-05-23T06:39:07Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:39:07Z] INFO – monitor_embedder – \u2714 Stored memory  in 6601359µs
+[2025-05-23T06:39:18Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:39:18Z] INFO – monitor_embedder – \u2714 Stored memory  in 5911401µs
+[2025-05-23T06:39:34Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:39:34Z] INFO – monitor_embedder – \u2714 Stored memory  in 10195532µs
+[2025-05-23T06:55:30Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:55:30.427287Z
+[2025-05-23T06:57:16Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T13:57:16.052564Z
+[2025-05-23T06:57:24Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T06:57:24Z] INFO – monitor_embedder – \u2714 Stored memory  in 6427807µs
+[2025-05-23T07:02:22Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T14:02:22.605234Z
+[2025-05-23T07:02:31Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/activity_embedder/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:02:31Z] INFO – monitor_embedder – \u2714 Stored memory  in 6639100µs
+[2025-05-23T07:17:53Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T14:17:53.775961Z
+[2025-05-23T07:17:56Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:41:35Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T14:41:35.594945Z
+[2025-05-23T07:41:38Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:41:38Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:41:45Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:41:45Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:41:53Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:41:53Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:42:00Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:42:00Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:42:08Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:42:08Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:42:15Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:42:15Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:42:23Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:42:23Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:42:30Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:42:30Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:42:38Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:42:38Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:42:45Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:42:45Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:42:52Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:42:52Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:43:00Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:43:00Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:43:07Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:43:07Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:43:15Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:43:15Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:43:22Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:43:22Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:43:30Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:43:30Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:43:37Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:43:37Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:43:45Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:43:45Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:43:52Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:43:52Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:49:01Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-23T14:49:01.863357Z
+[2025-05-23T07:49:04Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:49:04Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:49:12Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:49:12Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:49:19Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:49:19Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:49:26Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:49:26Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:49:34Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:49:34Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:49:41Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:49:41Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:49:49Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:49:49Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:49:56Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:49:56Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:50:04Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:50:04Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T07:50:11Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T07:50:11Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:31:56Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-24T03:31:56.260639Z
+[2025-05-23T20:31:59Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:31:59Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:32:06Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:32:06Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:32:14Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:32:14Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:32:21Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:32:21Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:32:28Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:32:28Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:32:36Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:32:36Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:32:43Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:32:43Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:32:51Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:32:51Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:32:58Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:32:58Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:33:06Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:33:06Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:33:13Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:33:13Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:33:21Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:33:21Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:33:28Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:33:28Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:33:36Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:33:36Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:33:43Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:33:43Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T20:33:51Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T20:33:51Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:57:31Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-24T04:57:31.691022Z
+[2025-05-23T21:57:34Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:57:34Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:57:41Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:57:41Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:57:49Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:57:49Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:57:56Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:57:56Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:58:04Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:58:04Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:58:11Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:58:11Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:58:19Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:58:19Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:58:26Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:58:26Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:58:34Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:58:34Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:58:41Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:58:41Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:58:49Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:58:49Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T21:58:56Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T21:58:56Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:08:33Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-24T05:08:33.238467Z
+[2025-05-23T22:08:36Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:08:36Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:08:43Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:08:43Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:08:50Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:08:50Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:08:58Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:08:58Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:09:05Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:09:05Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:09:13Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:09:13Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:09:20Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:09:20Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:09:28Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:09:28Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:55:04Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-24T05:55:04.382644Z
+[2025-05-23T22:55:07Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:55:07Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:55:14Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:55:14Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:55:22Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:55:22Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:55:29Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:55:29Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:55:36Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:55:36Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:55:44Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:55:44Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:55:51Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:55:51Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:55:59Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:55:59Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:56:06Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:56:06Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:56:14Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:56:14Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:56:21Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:56:21Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:56:29Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:56:29Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:56:36Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:56:36Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:56:44Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:56:44Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:56:51Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:56:51Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:56:59Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:56:59Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:57:06Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:57:06Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:57:13Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:57:13Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T22:57:21Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T22:57:21Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T23:36:18Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-24T06:36:18.428960Z
+[2025-05-23T23:36:21Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T23:36:21Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T23:36:28Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T23:36:28Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T23:36:36Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T23:36:36Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T23:36:43Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T23:36:43Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T23:36:51Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T23:36:51Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-23T23:36:58Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-23T23:36:58Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:47:59Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-24T07:47:59.977431Z
+[2025-05-24T00:48:02Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:48:02Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:48:10Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:48:10Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:48:17Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:48:17Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:48:25Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:48:25Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:48:32Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:48:32Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:48:40Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:48:40Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:48:47Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:48:47Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:48:55Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:48:55Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:49:02Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:49:02Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:55:56Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-24T07:55:56.003748Z
+[2025-05-24T00:55:58Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:55:58Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:56:06Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:56:06Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:56:13Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:56:13Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:56:21Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:56:21Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:56:28Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:56:28Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:56:36Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:56:36Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:56:43Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:56:43Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:56:50Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:56:50Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:56:58Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:56:58Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:57:05Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:57:05Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:57:13Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:57:13Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:57:20Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:57:20Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:57:28Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:57:28Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:57:35Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:57:35Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T00:57:43Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T00:57:43Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T01:01:07Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-24T08:01:07.029920Z
+[2025-05-24T01:01:09Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T01:01:09Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T01:01:17Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T01:01:17Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T01:01:24Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T01:01:24Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:45:53Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-24T10:45:53.164764Z
+[2025-05-24T03:45:56Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:45:56Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:46:03Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:46:03Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:46:11Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:46:11Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:57:16Z] INFO – monitor_embedder – BEGIN LIVE MONITOR at 2025-05-24T10:57:16.346982Z
+[2025-05-24T03:57:19Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:57:19Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:57:26Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:57:26Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:57:34Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:57:34Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:57:41Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:57:41Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:57:49Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:57:49Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:57:56Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:57:56Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:58:04Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:58:04Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:58:11Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:58:11Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage
+[2025-05-24T03:58:19Z] INFO – httpx – HTTP Request: POST http://localhost:8001/mcp/testclient/invoke/eddi_g/default_user "HTTP/1.1 200 OK"
+[2025-05-24T03:58:19Z] WARNING – monitor_embedder – Orchestration: eddi_g blocked storage

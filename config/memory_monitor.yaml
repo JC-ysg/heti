@@ -1,0 +1,41 @@
+polling:
+  enabled: true
+  interval_seconds: 5
+  max_batch_size: 100
+  lookback_window_minutes: 5
+  timestamp_buffer_seconds: 1
+  timeout_seconds: 30
+
+webhooks:
+  enabled: false
+  endpoint: "http://localhost:8000/webhook"
+  secret_token: "${WEBHOOK_SECRET}"
+
+logging:
+  file_enabled: true
+  file_path: "logs/memory_events/events.log"
+  event_log_path: "logs/memory_events/memory_events.jsonl"
+  console_level: "INFO"
+  file_level: "DEBUG"
+  rotation:
+    max_size_mb: 10
+    backup_count: 5
+
+event_types:
+  memory.created: true
+  memory.updated: true
+  memory.deleted: true
+  memory.accessed: false
+  embedding.started: true
+  embedding.completed: true
+  memory.error: true
+  memory.batch_operation: true
+
+notifications:
+  error_alert: true
+  error_threshold: 3
+  batch_summary_interval_minutes: 15
+
+performance:
+  max_memory_mb: 100
+  cpu_throttle_percent: 80 

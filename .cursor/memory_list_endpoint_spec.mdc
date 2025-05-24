@@ -1,0 +1,302 @@
+# GET /api/v1/memories - Memory Listing Endpoint Specification
+
+## Purpose
+Retrieves a paginated list of memories for a specific user with comprehensive filtering, sorting, and search capabilities.
+
+## Endpoint Details
+- **Route:** `GET /api/v1/memories`
+- **HTTP Method:** GET
+- **Content-Type:** `application/json` (for responses)
+- **Base URL:** Configurable (e.g., `http://localhost:8000` for local development)
+
+## Request Parameters
+
+### Required Parameters
+```
+user_id: string     // User identifier to filter memories by (query parameter)
+```
+
+### Optional Parameters - Filtering
+```
+app_id: UUID               // Filter by specific app UUID
+search_query: string       // Text search within memory content 
+categories: string         // Comma-separated category names (e.g., "work,personal")
+from_date: int            // Unix timestamp - memories created after this date
+to_date: int              // Unix timestamp - memories created before this date
+```
+
+### Optional Parameters - Pagination
+```
+page: int                 // Page number (default: 1, minimum: 1)
+size: int                 // Items per page (default: 10, minimum: 1, maximum: 100)
+```
+
+### Optional Parameters - Sorting
+```
+sort_column: string       // Column to sort by: "memory", "categories", "app_name", "created_at"
+sort_direction: string    // Sort direction: "asc" or "desc"
+```
+
+### Parameter Details
+
+#### **user_id** (string, required)
+- **Location:** Query parameter
+- **Purpose:** Identifies the user whose memories to retrieve
+- **Examples:** `"user123"`, `"alice@example.com"`, `"heti-agent-001"`
+- **Constraints:** Non-empty string, must exist in database
+
+#### **app_id** (UUID, optional)
+- **Location:** Query parameter
+- **Purpose:** Filter memories by specific application
+- **Format:** UUID4 string
+- **Examples:** `"550e8400-e29b-41d4-a716-446655440000"`
+
+#### **search_query** (string, optional)
+- **Location:** Query parameter
+- **Purpose:** Full-text search within memory content
+- **Behavior:** Case-insensitive LIKE search using SQL ILIKE
+- **Examples:** `"meeting notes"`, `"budget planning"`
+
+#### **categories** (string, optional)
+- **Location:** Query parameter
+- **Purpose:** Filter by comma-separated category names
+- **Format:** Comma-separated string
+- **Examples:** `"work"`, `"work,personal"`, `"finance,budget"`
+- **Behavior:** Memories must have at least one matching category
+
+#### **from_date** (int, optional)
+- **Location:** Query parameter
+- **Purpose:** Filter memories created after this timestamp
+- **Format:** Unix timestamp (seconds since epoch)
+- **Examples:** `1718505600` (corresponds to 2024-06-16)
+
+#### **to_date** (int, optional)
+- **Location:** Query parameter
+- **Purpose:** Filter memories created before this timestamp
+- **Format:** Unix timestamp (seconds since epoch)
+- **Examples:** `1718592000` (corresponds to 2024-06-17)
+
+#### **page** (int, optional)
+- **Location:** Query parameter
+- **Default:** `1`
+- **Purpose:** Page number for pagination
+- **Constraints:** Minimum value: 1
+
+#### **size** (int, optional)
+- **Location:** Query parameter
+- **Default:** `10`
+- **Purpose:** Number of items per page
+- **Constraints:** Minimum: 1, Maximum: 100
+
+#### **sort_column** (string, optional)
+- **Location:** Query parameter
+- **Purpose:** Column to sort results by
+- **Valid values:** `"memory"`, `"categories"`, `"app_name"`, `"created_at"`
+- **Default:** Sorted by `created_at` descending if not specified
+
+#### **sort_direction** (string, optional)
+- **Location:** Query parameter
+- **Purpose:** Sort direction
+- **Valid values:** `"asc"`, `"desc"`
+- **Default:** `"desc"` (newest first)
+
+## Success Response
+
+### HTTP Status: 200 OK
+
+#### Response Structure (FastAPI Page format)
+```json
+{
+    "items": [
+        {
+            "id": "uuid",                    // Memory UUID
+            "user_id": "number",             // Internal numeric user ID
+            "app_id": "uuid",                // Associated app UUID
+            "content": "string",             // Memory text content
+            "metadata_": {},                 // Additional metadata object
+            "state": "active",               // Memory state: "active", "paused", "archived"
+            "created_at": "2024-01-15T10:30:00Z",  // ISO timestamp
+            "updated_at": "2024-01-15T10:30:00Z",  // ISO timestamp
+            "categories": ["category1", "category2"],  // Associated categories
+            "app_name": "string"             // App name for reference
+        }
+    ],
+    "total": 25,                            // Total number of matching memories
+    "page": 1,                              // Current page number
+    "size": 10,                             // Items per page
+    "pages": 3                              // Total number of pages
+}
+```
+
+#### Response Fields
+
+- **items**: Array of memory objects matching the filters
+- **total**: Total count of memories matching filters (across all pages)
+- **page**: Current page number (1-indexed)
+- **size**: Number of items per page
+- **pages**: Total number of pages available
+
+#### Memory Object Structure
+- **id**: Unique UUID for the memory
+- **user_id**: Internal numeric user ID (not the query string user_id)
+- **app_id**: UUID of the associated application
+- **content**: The actual memory text content
+- **metadata_**: JSON object with additional metadata
+- **state**: Current memory state (active/paused/archived/deleted)
+- **created_at**: ISO 8601 timestamp of creation
+- **updated_at**: ISO 8601 timestamp of last update
+- **categories**: Array of category names associated with this memory
+- **app_name**: Human-readable name of the associated app
+
+## Error Responses
+
+### 404 Not Found - User Not Found
+```json
+{
+    "detail": "User not found"
+}
+```
+**Trigger:** When the provided `user_id` doesn't exist in the database
+
+### 400 Bad Request - Invalid Parameters
+```json
+{
+    "detail": "Invalid sort direction"
+}
+```
+**Triggers:**
+- Invalid `sort_direction` (not "asc" or "desc")
+- Invalid `sort_column` (not in allowed list)
+- Invalid pagination parameters (page < 1, size < 1 or size > 100)
+- Invalid date format for `from_date` or `to_date`
+
+### 422 Unprocessable Entity - Validation Error
+```json
+{
+    "detail": [
+        {
+            "loc": ["query", "user_id"],
+            "msg": "field required",
+            "type": "value_error.missing"
+        }
+    ]
+}
+```
+**Trigger:** Missing required `user_id` parameter
+
+### 500 Internal Server Error - System Error
+```json
+{
+    "detail": "Internal server error"
+}
+```
+**Triggers:**
+- Database connection issues
+- Qdrant vector store failures
+- Other system problems
+
+## Edge Cases and Behaviors
+
+### Empty Result Sets
+- **No memories found:** Returns `{"items": [], "total": 0, "page": 1, "size": 10, "pages": 0}`
+- **Page beyond total:** Returns empty items array with correct pagination metadata
+
+### Filtering Behaviors
+- **Multiple filters:** Applied with AND logic (all filters must match)
+- **Category filtering:** Memories must have at least one matching category
+- **Date range filtering:** Inclusive on both ends (>= from_date AND <= to_date)
+- **Search query:** Case-insensitive partial matching within content
+
+### Memory State Filtering
+- **Automatic filtering:** Excludes `deleted` and `archived` memories by default
+- **State inclusion:** Only returns memories in `active` state by default
+- **No explicit state parameter:** Cannot override state filtering via query parameters
+
+### Pagination Edge Cases
+- **Page 0 or negative:** Should return 400 Bad Request
+- **Size 0 or negative:** Should return 400 Bad Request  
+- **Size > 100:** Should return 400 Bad Request
+- **Page beyond total pages:** Returns empty results with correct metadata
+
+### Sorting Behaviors
+- **Default sorting:** By `created_at` descending (newest first)
+- **Null/missing values:** Handled gracefully by database
+- **Case sensitivity:** String sorts are case-insensitive
+
+### Special Character Handling
+- **Search query:** Supports Unicode characters and special symbols
+- **SQL injection protection:** Parameters are properly escaped
+- **URL encoding:** Special characters in query parameters must be URL-encoded
+
+## Performance Considerations
+
+### Query Optimization
+- **Database indexes:** Should exist on frequently filtered fields (user_id, app_id, created_at)
+- **Join optimization:** Uses left joins for app and category relationships
+- **Pagination efficiency:** Offset-based pagination may be slow for large offsets
+
+### Rate Limiting
+- **No explicit limits:** Current implementation doesn't show rate limiting
+- **Recommendation:** Implement rate limiting in production (e.g., 100 requests/minute per user)
+
+### Response Size
+- **Content length:** Memory content can be arbitrarily long
+- **Category arrays:** Can contain multiple categories per memory
+- **Metadata objects:** Can contain complex nested JSON structures
+
+## Security Considerations
+
+### Authentication
+- **No authentication:** Current implementation doesn't show authentication requirements
+- **User isolation:** Relies on correct user_id parameter for data isolation
+- **Recommendation:** Implement proper authentication and authorization
+
+### Input Validation
+- **SQL injection:** Protected by SQLAlchemy ORM parameter binding
+- **XSS protection:** Response is JSON, but content should be sanitized on display
+- **Parameter validation:** FastAPI provides automatic validation
+
+### Data Access
+- **User data isolation:** Users can only access their own memories
+- **App-based filtering:** App permissions are checked via `check_memory_access_permissions`
+- **No sensitive data exposure:** Internal user IDs are numbers, not the original user_id strings
+
+## Implementation Dependencies
+
+### Required Components
+- **FastAPI framework:** For request handling and validation
+- **SQLAlchemy ORM:** For database operations
+- **FastAPI Pagination:** For standardized pagination responses
+- **PostgreSQL database:** For primary data storage
+
+### Database Tables
+- **Memory:** Primary memory records
+- **User:** User identity mapping
+- **App:** Application metadata
+- **Category:** Category definitions
+- **Memory-Category relationship:** Many-to-many associations
+
+### Performance Dependencies
+- **Database connections:** Connection pooling for concurrent requests
+- **Memory joins:** Efficient joining with categories and apps
+- **Index usage:** Proper indexing for filtering and sorting
+
+## Integration Notes
+
+### Client Considerations
+- **Pagination handling:** Clients should implement proper pagination logic
+- **Error handling:** Handle 404 for invalid users, 400 for invalid parameters
+- **State management:** Remember that archived/deleted memories are excluded
+- **Filtering combinations:** All filters are combined with AND logic
+
+### Backward Compatibility
+- **Parameter evolution:** New optional parameters can be added safely
+- **Response structure:** FastAPI Page format is standardized
+- **Error format:** FastAPI standard error responses
+
+### Testing Requirements
+- **User scenarios:** Valid user, invalid user, non-existent user
+- **Pagination scenarios:** First page, last page, beyond last page, invalid page numbers
+- **Filtering scenarios:** Each filter individually and in combination
+- **Search scenarios:** Exact matches, partial matches, no matches, special characters
+- **Edge cases:** Empty databases, large result sets, concurrent access 

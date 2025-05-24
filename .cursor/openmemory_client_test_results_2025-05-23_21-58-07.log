@@ -1,0 +1,326 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.1, pytest-8.3.5, pluggy-1.5.0 -- C:\Users\cheng\AppData\Local\Programs\Python\Python313\python.exe
+cachedir: .pytest_cache
+rootdir: D:\NewBornProgrammer\Test1
+plugins: anyio-4.6.2.post1
+collecting ... collected 48 items
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_app_paused PASSED [  2%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_network_error PASSED [  4%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_simple_convenience_function PASSED [  6%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_success PASSED [  8%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_user_not_found PASSED [ 10%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_validation_error PASSED [ 12%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_bad_request PASSED [ 14%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_client_side_validation PASSED [ 16%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_complex_filter PASSED [ 18%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_empty_result PASSED [ 20%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_json_decode_error PASSED [ 22%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_network_error PASSED [ 25%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_rate_limit PASSED [ 27%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_server_error PASSED [ 29%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_simple_convenience_function PASSED [ 31%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_success_simple PASSED [ 33%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_validation_error PASSED [ 35%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_client_side_validation PASSED [ 37%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_invalid_uuid_format PASSED [ 39%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_json_decode_error PASSED [ 41%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_network_error PASSED [ 43%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_not_found PASSED [ 45%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_simple_convenience_function PASSED [ 47%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_success PASSED [ 50%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_categories_string PASSED [ 52%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_empty_result PASSED [ 54%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_invalid_parameters PASSED [ 56%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_network_error PASSED [ 58%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_simple_convenience_function PASSED [ 60%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_success PASSED [ 62%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_user_not_found PASSED [ 64%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_validation_error PASSED [ 66%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_with_filters PASSED [ 68%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_bad_request PASSED [ 70%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_client_side_validation PASSED [ 72%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_json_decode_error PASSED [ 75%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_network_error PASSED [ 77%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_not_found PASSED [ 79%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_simple_convenience_function PASSED [ 81%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_success PASSED [ 83%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_validation_error PASSED [ 85%]
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_without_metadata PASSED [ 87%]
+tests/test_openmemory_client.py::TestOpenMemoryClientIntegration::test_create_memory_real_api SKIPPED [ 89%]
+tests/test_openmemory_client.py::TestOpenMemoryClientIntegration::test_end_to_end_create_list_and_get SKIPPED [ 91%]
+tests/test_openmemory_client.py::TestOpenMemoryClientIntegration::test_end_to_end_create_update_and_get SKIPPED [ 93%]
+tests/test_openmemory_client.py::TestOpenMemoryClientIntegration::test_filter_memories_real_api SKIPPED [ 95%]
+tests/test_openmemory_client.py::TestOpenMemoryClientIntegration::test_list_memories_real_api SKIPPED [ 97%]
+tests/test_openmemory_client.py::TestOpenMemoryClientIntegration::test_update_memory_real_api SKIPPED [100%]
+
+============================== warnings summary ===============================
+tests/test_openmemory_client.py: 42 warnings
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:48: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    self.test_start_time = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_app_paused
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:236: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_app_paused
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_network_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_success
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_user_not_found
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_validation_error
+  D:\NewBornProgrammer\Test1\tools\openmemory_client.py:84: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    request_timestamp = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_app_paused
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_success
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_user_not_found
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_validation_error
+  D:\NewBornProgrammer\Test1\tools\openmemory_client.py:102: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    response_timestamp = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py: 42 warnings
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:54: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_end_time = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_network_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:278: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_simple_convenience_function
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:311: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_success
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:68: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_user_not_found
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:195: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_create_memory_validation_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:144: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_bad_request
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1720: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_bad_request
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_complex_filter
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_empty_result
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_json_decode_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_network_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_rate_limit
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_server_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_success_simple
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_validation_error
+  D:\NewBornProgrammer\Test1\tools\openmemory_client.py:724: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    request_timestamp = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_bad_request
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_complex_filter
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_empty_result
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_json_decode_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_rate_limit
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_server_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_success_simple
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_validation_error
+  D:\NewBornProgrammer\Test1\tools\openmemory_client.py:744: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    response_timestamp = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_client_side_validation
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1840: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_complex_filter
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1526: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_empty_result
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1621: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_json_decode_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1914: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_network_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1881: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_rate_limit
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1761: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_server_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1801: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_simple_convenience_function
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1951: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_success_simple
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1430: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_filter_memories_validation_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1673: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_client_side_validation
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:894: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_invalid_uuid_format
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:846: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_json_decode_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:968: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_json_decode_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_network_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_not_found
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_success
+  D:\NewBornProgrammer\Test1\tools\openmemory_client.py:405: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    request_timestamp = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_json_decode_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_not_found
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_success
+  D:\NewBornProgrammer\Test1\tools\openmemory_client.py:422: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    response_timestamp = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_network_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:933: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_not_found
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:801: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_simple_convenience_function
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1006: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_get_memory_success
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:733: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_categories_string
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:496: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_categories_string
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_empty_result
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_invalid_parameters
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_network_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_success
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_user_not_found
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_validation_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_with_filters
+  D:\NewBornProgrammer\Test1\tools\openmemory_client.py:261: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    request_timestamp = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_categories_string
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_empty_result
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_invalid_parameters
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_success
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_user_not_found
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_validation_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_with_filters
+  D:\NewBornProgrammer\Test1\tools\openmemory_client.py:278: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    response_timestamp = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_empty_result
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:533: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_invalid_parameters
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:602: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_network_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:681: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_simple_convenience_function
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:707: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_success
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:338: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_user_not_found
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:568: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_validation_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:640: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_list_memories_with_filters
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:432: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_bad_request
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1238: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_bad_request
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_json_decode_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_network_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_not_found
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_success
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_validation_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_without_metadata
+  D:\NewBornProgrammer\Test1\tools\openmemory_client.py:566: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    request_timestamp = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_bad_request
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_json_decode_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_not_found
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_success
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_validation_error
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_without_metadata
+  D:\NewBornProgrammer\Test1\tools\openmemory_client.py:586: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    response_timestamp = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_client_side_validation
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1277: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_json_decode_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1361: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_network_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1333: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_not_found
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1150: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_simple_convenience_function
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1397: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_success
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1028: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_validation_error
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1192: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+tests/test_openmemory_client.py::TestOpenMemoryClient::test_update_memory_without_metadata
+  D:\NewBornProgrammer\Test1\tests\test_openmemory_client.py:1100: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    test_start = datetime.utcnow().isoformat()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================= 42 passed, 6 skipped, 187 warnings in 0.62s =================

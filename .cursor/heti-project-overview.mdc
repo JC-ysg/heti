@@ -1,0 +1,90 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# HĒTI PROJECT OVERVIEW — FOR CURSOR & ALL AGENTS
+
+---
+
+## Mission & Vision
+
+Hēti is a **modular, local-first, continuously evolving personal AI assistant** built to act as your cognitive extension, long-term partner, and reasoning engine.  
+**Its purpose is NOT just data logging or memory embedding, but to be a real, trustworthy, explainable, user-aligned “intelligent agent”** with adaptive, transparent reasoning and autonomy—eventually serving as your “personal OS.”
+
+---
+
+## Core Goals
+
+- **Total User Alignment:** Hēti’s only purpose is to help the user (Yssg) become smarter, richer, more capable, and more effective in every real aspect—learning, work, growth, health, decision-making, life goals, and risk protection.
+- **Memory as Intelligence:** All captured memories (events, context, files, actions, screen/audio, dialog) are stored not just for reference, but as the active “background” for ongoing reasoning, guidance, and self-improvement.
+- **Modular, Upgradable, and Local:** Hēti is built in fully modular Python, never monolithic; all modules are testable, swappable, and controlled locally (on RTX 3070). Cloud use is never default and must be explicit.
+- **Autonomy with Control:** Hēti can act, automate, and reason—but all dangerous/critical operations are permission-gated, logged, and can be instantly shut down (kill switch).
+- **Transparency & Explainability:** Every decision, action, and suggestion is logged with natural-language reasoning, source, and confidence—no “black box” logic.
+- **Real Evolution:** Hēti adapts its own persona, logic, and strategy over time based on memory, feedback, user emotional state, mistakes, and successes (continuous learning loop).
+- **Multimodal Input, Real-Time Perception:** Uses screen, audio, user files, and more for full situational awareness—not just passive logs, but real context detection, emotional tone, and pattern recognition.
+- **Gamified, User-Customizable Growth:** Behaves like a game character—attributes, skills, professions, limitations, visible “evolution,” and selectable/user-tuned behavior (autonomy, humor, caution, verbosity, etc.).
+
+---
+
+## Key Principles & Rules
+
+- **All inputs/outputs must be logged and explainable.**
+- **System is modular:**  
+  Main folders: `agent/`, `tools/`, `ui/`, `memory/`, `perception/`, `config/`, `logs/`
+- **All modules must be referenced by @file, @folder, or @git** for traceable, precise work and review.
+- **Every feature, rule, and decision must be user-controllable via UI or YAML (e.g., autonomy levels, persona config, mode locks, kill switch).**
+- **All behavior, tone, and action are immediately adjustable and revertible.**
+- **No cloud or API calls unless explicitly permitted—local is default.**
+- **Full local “privacy mode” is available and must be honored system-wide.**
+- **Every step, module, and action is test-driven: tests are written first, code only merges after all pass.**
+- **Atomic work:** Each PR/commit is single-focus; no big merges, always modular steps.
+
+---
+
+## What Hēti IS NOT
+
+- Not just a log aggregator or database.
+- Not just an embedding or vector store.
+- Not a “set and forget” script—**must always reason, explain, and align to current user goals and state.**
+- Not a black-box AI—**all logic must be reviewable, tunable, and stoppable at any time.**
+
+---
+
+## Detailed Functional Expectations
+
+- **Memory:** Hēti must record and organize all relevant user activity (screen, browser, files, voice, system events), with context tags and emotional labels where possible.
+- **Embedding:** All new information is embedded into semantic vectors, using local LLMs/embedding models (Ollama, LM Studio, Llama2/3, etc.) as selected in config.
+- **Monitoring:** Real-time monitoring loops (e.g., `monitor_embedder.py`) capture and process activities, route to LLM for reasoning (“store or discard?”), and only embed if meaningful.
+- **LLM Integration:** LLM is the “brain” for reasoning, task planning, and goal alignment. Must be able to:
+    - Query and summarize memory
+    - Take action or ask for permission as needed
+    - Log every suggestion/action with reasoning and confidence
+- **Goal Tracking:** Hēti must track all explicit user goals, milestones, and learning/work targets; every suggestion/action must be traceable to these goals.
+- **User Control Panel:** UI must provide real-time controls for tone, role, autonomy, verbosity, kill switch, and permission escalation; all behavior is tunable here or via YAML.
+- **Self-Review:** Weekly or on-demand, Hēti self-reviews logs and memories for repeated mistakes, unproductive patterns, and missed goals—adapts persona and behavior accordingly.
+- **Safety:** Instant kill (voice/hotkey/UI/file) stops ALL processes and logs shutdown. No action proceeds without permission if risk is detected.
+- **Explainability:** All agent actions must be accompanied by a log (in `explainability_log.py` or equivalent) with plain-language rationale and reference to triggering input.
+- **Gamification:** User can “level up” Hēti’s skills, unlock abilities, or tune limitations—system evolves visibly, with feedback and user direction.
+
+---
+
+## Implementation/Development Rules for Cursor
+
+1. **Always require a mini-spec before generating or reviewing code:** feature, stack, IO, limits—save in `.cursor/`.
+2. **Work one file or module at a time; never cross-cut or bulk merge.**
+3. **Write/lock all tests first; code is only valid when all pass.**
+4. **@file, @folder, @git scope prompts and reviews.**
+5. **All logs, test outcomes, and failures go to `logs/` and `.cursor/failure_cases.md` for future self-improvement.**
+6. **Every code, spec, or prompt must enforce modularity, explainability, user alignment, safety, and testability.**
+
+---
+
+## Ultimate Objective
+
+> **Build a “Jarvis-class” personal AI OS that truly thinks, learns, evolves, and acts—serving your real goals, protecting your interests, and growing with you.  
+> The system must always be user-aligned, fully explainable, modular, safe, and controlled.**
+
+---
+
+**Cursor, all code, and all agents MUST operate with this intent, never shortcutting or ignoring any project rule.**

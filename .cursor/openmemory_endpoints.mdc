@@ -1,0 +1,240 @@
+# OpenMemory API Endpoint Inventory
+
+## Overview
+This document lists all confirmed endpoint definitions from the OpenMemory FastAPI source code located in `/mem0/openmemory/openmemory/api/app/routers/`.
+
+## Memory Endpoints (`/api/v1/memories`)
+
+### ✅ CONFIRMED - GET `/api/v1/memories`
+- **HTTP Method:** GET
+- **Purpose:** List all memories with filtering, pagination, and search capabilities
+- **Main Parameters:**
+  - `user_id` (str, required): User identifier
+  - `app_id` (UUID, optional): Filter by specific app
+  - `from_date` (int, optional): Filter memories after timestamp
+  - `to_date` (int, optional): Filter memories before timestamp
+  - `categories` (str, optional): Comma-separated category names
+  - `search_query` (str, optional): Text search in memory content
+  - `sort_column` (str, optional): Sort by memory, categories, app_name, created_at
+  - `sort_direction` (str, optional): Sort direction (asc/desc)
+- **Response Format:** Paginated list of MemoryResponse objects
+- **Error Conditions:** 404 if user not found
+
+### ✅ CONFIRMED - GET `/api/v1/memories/categories`
+- **HTTP Method:** GET
+- **Purpose:** Get all unique categories associated with user's memories
+- **Main Parameters:**
+  - `user_id` (str, required): User identifier
+- **Response Format:** JSON with categories array and total count
+- **Error Conditions:** 404 if user not found
+
+### ✅ CONFIRMED - POST `/api/v1/memories`
+- **HTTP Method:** POST
+- **Purpose:** Create a new memory with content and metadata
+- **Main Parameters:**
+  - `user_id` (str, required): User identifier
+  - `text` (str, required): Memory content
+  - `infer` (bool, optional): Whether to infer categories automatically
+  - `app` (str, optional): App identifier (default: "openmemory")
+- **Response Format:** Created memory object with ID and metadata
+- **Error Conditions:** Validation errors for required fields
+
+### ✅ CONFIRMED - GET `/api/v1/memories/{memory_id}`
+- **HTTP Method:** GET
+- **Purpose:** Retrieve a specific memory by its ID
+- **Main Parameters:**
+  - `memory_id` (UUID, required): Memory identifier
+- **Response Format:** Single MemoryResponse object
+- **Error Conditions:** 404 if memory not found
+
+### ✅ CONFIRMED - DELETE `/api/v1/memories`
+- **HTTP Method:** DELETE
+- **Purpose:** Delete multiple memories by their IDs
+- **Main Parameters:**
+  - `memory_ids` (List[UUID], required): List of memory IDs to delete
+  - `user_id` (str, required): User identifier
+- **Response Format:** Success confirmation
+- **Error Conditions:** 404 if memories not found
+
+### ✅ CONFIRMED - POST `/api/v1/memories/actions/archive`
+- **HTTP Method:** POST
+- **Purpose:** Archive multiple memories by changing their state
+- **Main Parameters:**
+  - `memory_ids` (List[UUID], required): Memory IDs to archive
+  - `user_id` (UUID, required): User identifier
+- **Response Format:** Success confirmation
+- **Error Conditions:** 404 if memories not found
+
+### ✅ CONFIRMED - POST `/api/v1/memories/actions/pause`
+- **HTTP Method:** POST
+- **Purpose:** Pause memories by various criteria (IDs, categories, apps)
+- **Main Parameters:**
+  - `memory_ids` (List[UUID], optional): Specific memory IDs
+  - `category_ids` (List[UUID], optional): Category IDs to pause
+  - `app_id` (UUID, optional): App ID to pause
+  - `all_for_app` (bool, optional): Pause all memories for app
+  - `global_pause` (bool, optional): Global pause
+  - `state` (MemoryState, optional): Target state
+  - `user_id` (str, required): User identifier
+- **Response Format:** Success confirmation
+- **Error Conditions:** Validation errors for conflicting parameters
+
+### ✅ CONFIRMED - GET `/api/v1/memories/{memory_id}/access-log`
+- **HTTP Method:** GET
+- **Purpose:** Get access log for a specific memory
+- **Main Parameters:**
+  - `memory_id` (UUID, required): Memory identifier
+  - `page` (int, optional): Page number (default: 1)
+  - `page_size` (int, optional): Page size (default: 10, max: 100)
+- **Response Format:** Paginated access log entries
+- **Error Conditions:** 404 if memory not found
+
+### ✅ CONFIRMED - PUT `/api/v1/memories/{memory_id}`
+- **HTTP Method:** PUT
+- **Purpose:** Update memory content
+- **Main Parameters:**
+  - `memory_id` (UUID, required): Memory identifier
+  - `memory_content` (str, required): New memory content
+  - `user_id` (str, required): User identifier
+- **Response Format:** Updated memory object
+- **Error Conditions:** 404 if memory not found
+
+### ✅ CONFIRMED - POST `/api/v1/memories/filter`
+- **HTTP Method:** POST
+- **Purpose:** Advanced filtering of memories with complex criteria
+- **Main Parameters:**
+  - `user_id` (str, required): User identifier
+  - `page` (int, optional): Page number (default: 1)
+  - `size` (int, optional): Page size (default: 10)
+  - `search_query` (str, optional): Text search query
+  - `app_ids` (List[UUID], optional): Filter by app IDs
+  - `category_ids` (List[UUID], optional): Filter by category IDs
+  - `sort_column` (str, optional): Sort column
+  - `sort_direction` (str, optional): Sort direction
+  - `from_date` (int, optional): Start date filter
+  - `to_date` (int, optional): End date filter
+  - `show_archived` (bool, optional): Include archived memories
+- **Response Format:** Paginated list of MemoryResponse objects
+- **Error Conditions:** 404 if user not found
+
+### ✅ CONFIRMED - GET `/api/v1/memories/{memory_id}/related`
+- **HTTP Method:** GET
+- **Purpose:** Get memories related to a specific memory
+- **Main Parameters:**
+  - `memory_id` (UUID, required): Memory identifier
+  - `user_id` (str, required): User identifier
+- **Response Format:** Paginated list of related MemoryResponse objects
+- **Error Conditions:** 404 if memory or user not found
+
+## App Management Endpoints (`/api/v1/apps`)
+
+### ✅ CONFIRMED - GET `/api/v1/apps`
+- **HTTP Method:** GET
+- **Purpose:** List all apps with statistics and filtering
+- **Main Parameters:**
+  - `name` (str, optional): Filter by app name
+  - `is_active` (bool, optional): Filter by active status
+  - `sort_by` (str, optional): Sort by name, memories, memories_accessed
+  - `sort_direction` (str, optional): Sort direction (asc/desc)
+  - `page` (int, optional): Page number (default: 1)
+  - `page_size` (int, optional): Page size (default: 10, max: 100)
+- **Response Format:** Paginated list of apps with memory counts
+- **Error Conditions:** None specific
+
+### ✅ CONFIRMED - GET `/api/v1/apps/{app_id}`
+- **HTTP Method:** GET
+- **Purpose:** Get detailed information about a specific app
+- **Main Parameters:**
+  - `app_id` (UUID, required): App identifier
+- **Response Format:** App details with access statistics
+- **Error Conditions:** 404 if app not found
+
+### ✅ CONFIRMED - GET `/api/v1/apps/{app_id}/memories`
+- **HTTP Method:** GET
+- **Purpose:** List all memories created by a specific app
+- **Main Parameters:**
+  - `app_id` (UUID, required): App identifier
+  - `page` (int, optional): Page number (default: 1)
+  - `page_size` (int, optional): Page size (default: 10, max: 100)
+- **Response Format:** Paginated list of memories with categories
+- **Error Conditions:** 404 if app not found
+
+### ✅ CONFIRMED - GET `/api/v1/apps/{app_id}/accessed`
+- **HTTP Method:** GET
+- **Purpose:** List memories accessed by a specific app with access counts
+- **Main Parameters:**
+  - `app_id` (UUID, required): App identifier
+  - `page` (int, optional): Page number (default: 1)
+  - `page_size` (int, optional): Page size (default: 10, max: 100)
+- **Response Format:** Paginated list of memories with access counts
+- **Error Conditions:** 404 if app not found
+
+### ✅ CONFIRMED - PUT `/api/v1/apps/{app_id}`
+- **HTTP Method:** PUT
+- **Purpose:** Update app details (currently only active status)
+- **Main Parameters:**
+  - `app_id` (UUID, required): App identifier
+  - `is_active` (bool, required): New active status
+- **Response Format:** Updated app object
+- **Error Conditions:** 404 if app not found
+
+## Statistics Endpoints (`/api/v1/stats`)
+
+### ✅ CONFIRMED - GET `/api/v1/stats`
+- **HTTP Method:** GET
+- **Purpose:** Get user profile statistics including memory and app counts
+- **Main Parameters:**
+  - `user_id` (str, required): User identifier
+- **Response Format:** JSON with total_memories, total_apps, and apps list
+- **Error Conditions:** 404 if user not found
+
+## Endpoints Relevant to Heti Core Functions
+
+### 🎯 HIGH PRIORITY for Heti:
+- `POST /api/v1/memories` - Creating new memories
+- `GET /api/v1/memories` - Retrieving memories with search/filter
+- `GET /api/v1/memories/{memory_id}` - Getting specific memories
+- `PUT /api/v1/memories/{memory_id}` - Updating memory content
+- `POST /api/v1/memories/filter` - Advanced memory filtering
+
+### 🎯 MEDIUM PRIORITY for Heti:
+- `GET /api/v1/memories/categories` - Understanding memory organization
+- `GET /api/v1/memories/{memory_id}/related` - Finding related memories
+- `GET /api/v1/apps` - App management
+- `GET /api/v1/stats` - Usage statistics
+
+### 🎯 LOW PRIORITY for Heti:
+- `DELETE /api/v1/memories` - Memory deletion (admin functions)
+- `POST /api/v1/memories/actions/archive` - Memory archiving
+- `POST /api/v1/memories/actions/pause` - Memory state management
+- `GET /api/v1/memories/{memory_id}/access-log` - Access tracking
+- App-specific endpoints for detailed analytics
+
+## Missing Endpoints (Not Found)
+
+### ❌ MISSING - User Management Endpoints
+- No endpoints found for user creation, deletion, or management
+- User creation appears to be handled automatically in the application
+
+### ❌ MISSING - Authentication Endpoints
+- No login/logout endpoints found
+- No token management endpoints found
+- Authentication appears to be handled by external systems
+
+### ❌ MISSING - Embedding/Vector Endpoints
+- No direct embedding generation endpoints found
+- Vector operations appear to be handled internally
+
+### ❌ MISSING - Configuration Endpoints
+- No API endpoints for system configuration
+- No endpoints for adjusting AI model settings
+
+## Notes
+
+1. **All endpoints confirmed** by examining source code in `mem0/openmemory/openmemory/api/app/routers/`
+2. **Base URL pattern:** All endpoints use `/api/v1/` prefix
+3. **Authentication:** Not explicitly implemented in the examined endpoints
+4. **Pagination:** Most list endpoints support pagination with `page` and `page_size` parameters
+5. **Error handling:** Standard HTTP status codes (404, 400, etc.)
+6. **UUID format:** All IDs use UUID format for consistency
+7. **Response format:** JSON responses with consistent schema patterns 

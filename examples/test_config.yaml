@@ -1,0 +1,10 @@
+error:
+  deduplication_window_seconds: 5
+logging:
+  console_level: INFO
+  event_log_path: examples/logs/error_events.jsonl
+  file_enabled: true
+  file_path: examples/logs/monitor.log
+polling:
+  enabled: true
+  interval_seconds: 1
