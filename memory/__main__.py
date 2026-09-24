@@ -106,6 +106,13 @@ def cmd_validate(vault: Path, args) -> int:
     return 0
 
 
+def cmd_seed_split(args) -> int:
+    from .seed_split import split_seed
+
+    print(f"{split_seed(args.seed, args.out)} files written")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(prog="python -m memory", description="Hēti memory layer CLI")
     sub = p.add_subparsers(dest="cmd", required=True)
@@ -131,6 +138,10 @@ def build_parser() -> argparse.ArgumentParser:
     v = sub.add_parser("validate", help="check notes against the contract; prints counts only by default")
     v.add_argument("--details", action="store_true", help="also print each problem and warning")
     v.add_argument("--vault", help=f"vault directory (or set {VAULT_ENV})")
+
+    ss = sub.add_parser("seed-split", help="split a seed collection file into one file per entry")
+    ss.add_argument("seed")
+    ss.add_argument("--out", required=True, help="output directory (existing files are never overwritten)")
     return p
 
 
@@ -140,6 +151,8 @@ def main(argv=None, now: datetime | None = None) -> int:
     now = now or datetime.now(timezone.utc)
     if args.cmd == "ingest-claude":
         return cmd_ingest_claude(resolve_vault(parser, args), args, now)
+    if args.cmd == "seed-split":
+        return cmd_seed_split(args)
     if args.cmd == "index":
         return cmd_index_rebuild(resolve_vault(parser, args), args)
     if args.cmd == "query":
