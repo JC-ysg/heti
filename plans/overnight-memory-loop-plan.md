@@ -1,3 +1,5 @@
+> ✅ **This plan was fully executed on 2026-09-24 (see §7 and `plans/overnight-memory-loop-report.md`). Do not re-run it.** It is kept as a record. For the current direction and status, read `CLAUDE.md` and `PLAN.md` §9.
+
 # Hēti Overnight Autonomous Plan: The First Memory-Layer Loop (v2, revised after adversarial review)
 
 > **Read this before each step, and again after any context summarization**

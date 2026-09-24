@@ -2,7 +2,7 @@
 
 建立:2026-09-23
 依據:vault seed 第 01–44 則(2026-09-19)+ 2026-09-23 的四個決定
-狀態:待執行
+狀態:執行中(進度見第九節,最後更新 2026-09-24)
 
 ---
 
@@ -141,8 +141,8 @@ schema 改用真實捕捉到的資料測,關卡改成「抽取器跑過三十則
 ### M0 — 地基
 
 - [ ] 清空 `JC-ysg/heti`:移除 `heticontrol.py`、`Heti/`、`agent/`、`tools/`、`ui/`、`mem0/`、`examples/`、根目錄測試腳本
-- [ ] `.cursor/` 舊計劃檔標記為已取代(保留,不刪)
-- [ ] 建立新結構(見第五節)
+- [x] `.cursor/` 舊計劃檔標記為已取代(保留,不刪)—— 見 `.cursor/SUPERSEDED.md`
+- [~] 建立新結構(見第五節)—— 目前程式在 `memory/`,不是 `src/heti/`;`contract/`、`config/heti.yaml` 未建。見第九節偏離 2
 - [ ] **44 則 seed 寫進 `vault/00-seed/`**,一則一檔,frontmatter 原樣
 - [ ] 建立私有 vault repo + 自動 commit(解第 31 則)
 
@@ -152,8 +152,9 @@ schema 改用真實捕捉到的資料測,關卡改成「抽取器跑過三十則
 ### M1 — 第一條迴路(最小可跑)
 
 - [ ] `adapters/claude_code.py`:讀 `~/.claude/projects/*/*.jsonl` → `(原文, 來源, 時間)`
-- [ ] `gate.py`:格式驗證 / 去重 / 時間正規化 / **密鑰清洗**
-- [ ] 寫進 `vault/raw/`,append-only,檔名時間戳
+- [x] (計劃外)`memory/adapters/claude_export.py`:讀 **Claude 網頁版對話匯出**(json / zip / 資料夾)—— 見第九節偏離 1
+- [~] `gate.py`:格式驗證 / 去重 / 時間正規化 / **密鑰清洗** —— 前三項已完成(`memory/gate.py`),密鑰清洗未做
+- [x] 寫進 `vault/raw/`,append-only,檔名時間戳 —— `memory/raw_store.py`
 - [ ] launchd 每 N 分鐘跑一次
 
 **M1 沒有抽取、沒有索引、沒有檢索。先讓原文進得來。**
@@ -171,7 +172,7 @@ schema 改用真實捕捉到的資料測,關卡改成「抽取器跑過三十則
 
 ### M3 — 檢索
 
-- [ ] 結構查詢:照 type / status / 時間撈(frontmatter + ripgrep)
+- [x] 結構查詢:照 type / status / 時間撈 —— `memory/index.py`(用可重建的 JSON 索引,不是 ripgrep)
 - [ ] 回答組裝:只用檢索到的片段,附來源檔路徑,撈不到就說撈不到(第 12 則)
 - [ ] 語意檢索:**延後**,等結構查詢真的不夠用再說
 
@@ -254,3 +255,60 @@ heti/
 
 **這份文件是第四份。** 它唯一的價值是被執行掉。
 M0 完成之前,不要再產生第五份文件。
+
+---
+
+## 九、進度與偏離(2026-09-24 更新)
+
+這一節記錄計劃和實際執行的差距。**勾選狀態以第四節為準,這裡說明為什麼。**
+
+### 已完成
+
+2026-09-24 一次隔夜自主執行(計劃:`plans/overnight-memory-loop-plan.md`;報告:`plans/overnight-memory-loop-report.md`)產出 `memory/` 套件:
+
+| 模組 | 做什麼 | 對應 |
+|---|---|---|
+| `memory/contract.py` | 五欄位、type 四值、筆記驗證 → 問題 / 警告 | #07、#35 |
+| `memory/frontmatter.py` | frontmatter 解析,值一律保持字串 | #02 |
+| `memory/raw_store.py` | 原始層寫入:`open "x"` + `chmod 0444`,檔名時間戳,沒有更新 / 刪除路徑 | #08、#14 |
+| `memory/gate.py` | 正規化關卡:格式、時間界限、時區必填、去重;拒絕的項目有計數和理由 | #37 |
+| `memory/adapters/claude_export.py` | Claude 網頁版匯出 → 可讀逐字稿 + 原始 JSON 原封保留 | #38、#08 |
+| `memory/index.py` | 可重建索引 + 結構查詢(type / status / 時間 / kind),每筆附路徑;拒絕把索引建在 raw 裡 | #10、#11、#12、#13 |
+| `memory/seed_split.py` | seed 合集 → 一則一檔,只印數量 | M0 |
+| `memory/__main__.py` | 一次性 CLI:`ingest-claude`、`index rebuild`、`query`、`validate`、`seed-split` | #06、#20 |
+
+75 個測試,只用合成資料,Python 3.9 / 3.11、離線都通過。舊程式一行都沒動。
+
+### 偏離
+
+| # | 計劃寫的 | 實際 | 原因 | 要做的 |
+|---|---|---|---|---|
+| 1 | 第一個來源:Claude Code 本地 JSONL(決定 B) | 做的是 Claude 網頁版對話匯出 | 隔夜計劃依 #38/#39「從 AI 對話開始、Claude 對話可以匯出」選了匯出檔,沒有對齊決定 B | **確認第一個來源**。若維持決定 B,補寫 JSONL 轉接器;匯出轉接器可留可丟(L2) |
+| 2 | 程式放 `src/heti/`,規則放 `contract/` | 程式放 `memory/`;L1 規則寫在 `memory/contract.py` 常數 | macOS 不分大小寫,`heti/` 會和舊的 `Heti/` 撞名 | M0 清掉舊程式後,決定是否搬到 `src/heti/`,並把 L1 規則抽成 `contract/` 下的文件 |
+| 3 | 關卡包含密鑰清洗 | 沒有 | 隔夜計劃範圍只含格式、去重、時間 | 接真實資料前補上(#40) |
+| 4 | launchd 定時跑 | 只有一次性 CLI | #20 未解,agent 不代為決定 | 等 #20、#34 定案 |
+| 5 | 結構查詢用 frontmatter + ripgrep | 用可重建的 JSON 索引 | 方便做時間範圍與 kind 過濾 | 無;索引可隨時刪掉重建,符合 #11 |
+
+### BLOCKED
+
+- **seed 進 vault(M0)**:執行容器裡沒有 seed 檔。在有 seed 的機器上跑:
+  `python3 -m memory seed-split <seed 合集> --out <vault>/00-seed`,再跑 `python3 -m memory validate`。
+- **完整隱私檢查**:同上,缺 seed 所以只跑了降級版。有 seed 時跑 `HETI_SEED=<seed> python plans/tools/privacy_check.py --repo`。
+
+### 待使用者決定(來自隔夜報告)
+
+- raw 的 frontmatter 格式(L1 草案):`source / source_id / source_sha256 / occurred_at / ingested_at`
+- raw 的形式 = 可讀逐字稿 + 原封 JSON,能不能接受為 L0
+- 對話持續增長時,查詢是否只顯示最新版本(#29)
+- `status` 的合法值
+- frontmatter 多出來的欄位(例如 `tags`)是否允許;目前只給警告
+- raw 的 `--since` 比 `occurred_at`(目前)還是 `ingested_at`
+- Claude 匯出格式是憑記憶寫的,**還沒用真實匯出檔驗證過**
+- repo 是公開的:Hēti 是否搬到私有 repo
+
+### 下一步建議(依 PLAN.md 順序)
+
+1. **M0**:把 seed 放進 vault(上面的 BLOCKED 項)。這是第 22 則那句「vault 檔案零則」不再成立的條件。
+2. 回答偏離 1(第一個來源)與第七節的 #20。
+3. M0 清除舊程式(決定 D)。
+4. 補密鑰清洗,然後用真實資料跑 M1。
