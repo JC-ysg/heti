@@ -54,7 +54,7 @@ def _read(path: Path):
         return None, "not valid utf-8"
 
 
-def _note_paths(vault: Path):
+def note_paths(vault: Path):
     for p in sorted(vault.rglob("*.md")):
         rel = p.relative_to(vault)
         if any(part.startswith(".") for part in rel.parts) or rel.parts[0] == RAW_DIRNAME:
@@ -77,7 +77,7 @@ def scan(vault: Path) -> tuple[list[dict], list[dict], list[dict]]:
         rec.update({k: _str(v) for k, v in fm.items() if k not in ("path", "kind")})
         records.append(rec)
 
-    for p, rel in _note_paths(vault):
+    for p, rel in note_paths(vault):
         fm, err = _read(p)
         probs, warns = ([err], []) if err else validate_note(fm)
         add(rel, "note", fm, probs, warns)

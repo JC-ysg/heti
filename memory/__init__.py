@@ -5,3 +5,4 @@ Layers:
 - L1: the fields and rules (contract.FIELDS / TYPES, raw_store.RAW_FIELDS, gate checks).
 - L2: this code (adapters, gate, index, CLI). Replaceable within a day.
 """
+from __future__ import annotations
