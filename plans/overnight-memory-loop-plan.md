@@ -351,7 +351,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 | S1 seed_split tool | DONE | 2026-09-24 08:24 | 06908ca |  |
 | S2 Real seeds (local only) | BLOCKED (seed file missing) | 2026-09-24 08:30 | - | no seed in this container; pipeline dry-run on synthetic seed OK |
 | F1 README | DONE | 2026-09-24 08:34 | ee214d7 |  |
-| F2 DoD acceptance + report | TODO | | | |
+| F2 DoD acceptance + report | DONE | 2026-09-24 08:39 | (this commit) | DoD-8 degraded; S2 blocked |
 
 ---
 
@@ -504,6 +504,64 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - Privacy gate: degraded; CJK only in `memory/README.md` (allowed by rule 6b); DEGRADED GATE: PASS
 - Code commit: ee214d7
 - Next step: F2
+
+### [2026-09-24 08:47 UTC] [F2] DONE
+- What was done: checked DoD-1 to DoD-12 one by one; finished `plans/overnight-memory-loop-report.md` (all 10 sections); deleted the send_later check-in (`trig_014t9eEJqwjmyDQbkcxaLfcf` deleted, no more pending triggers).
+- DoD verification commands and real output:
+  ```
+  == DoD-1
+  75 passed in 0.34s
+  real	0m0.589s
+  == DoD-2
+  75 passed in 0.38s
+  exit=0
+  == DoD-3
+  5 passed in 0.09s
+  == DoD-4 tests
+  7 passed, 68 deselected in 0.09s
+  == DoD-4e grep
+  memory/index.py:100:    # Whitelisted write path: unlink first (never write through a symlink), then create fresh.
+  memory/index.py:102:    path.unlink(missing_ok=True)
+  == DoD-5
+  10 passed, 65 deselected in 0.17s
+  == DoD-6
+  14 passed in 0.06s
+  == DoD-7
+  12 passed in 0.04s
+  == DoD-8
+  SEED MISSING -> FAIL CLOSED (enter degraded mode, plan §5 rule 6b)
+  exit=2
+  == DoD-9
+  (grep exit=1, 1 = no matches)
+  == DoD-10
+  test functions: 70, without assertion: 0
+  == DoD-11 old code diff
+  0
+  == scope
+  .heti-baseline
+  (non memory/plans files listed above)
+  == DoD-3 (raw no type)
+  3
+  == DoD-2 network really off
+  OSError: [Errno 101] Network is unreachable
+  == DoD-8 degraded 6b over full diff since BASELINE
+  files outside memory/ plans/ (excluding .heti-baseline from plan setup):
+  0
+  files with CJK in diff:
+    memory/README.md
+  commit messages with CJK:
+    none
+  == DoD-10 random pick
+  test_claude_export.py::test_transcript_rendering
+  test_seed_split.py::test_cli_prints_only_count
+  test_contract.py::test_illegal_type
+  ```
+  (Under DoD-3: the `SP/demo/raw` files lacking a `^type:` line = 3/3, so raw never has a `type`. DoD-8: seed missing → exit 2; the rule 6b degraded checks all passed. DoD-11: the old code diff has 0 lines; `git status` is checked again after this commit.)
+- Result: DoD-1/2/3/4/5/6/7/9/10/11/12 ✅; DoD-8 ⚠️ degraded (seed missing); S2 BLOCKED (seed missing). Minimum acceptable result (DoD-1, 4, 8, 11, 12): met (DoD-8 via the degraded path allowed by the plan).
+- Tests: passed=75 failed=0 (Python 3.11 and 3.9; also 75 passed offline)
+- Privacy gate: degraded; DEGRADED GATE: PASS
+- send_later trigger_id: none (deleted)
+- Next step: none. Everything is done; the user needs to supply the seed file to finish S2.
 
 ---
 
