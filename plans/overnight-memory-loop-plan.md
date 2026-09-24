@@ -348,7 +348,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 | G2 CLI ingest | DONE | 2026-09-24 08:01 | 65acb08 |  |
 | I1 Rebuildable index + query | DONE | 2026-09-24 08:07 | 40acaf6 |  |
 | I2 CLI index/query/validate + E2E | DONE | 2026-09-24 08:17 | 8adef0c |  |
-| S1 seed_split tool | TODO | | | |
+| S1 seed_split tool | DONE | 2026-09-24 08:24 | 06908ca |  |
 | S2 Real seeds (local only) | TODO | | | |
 | F1 README | TODO | | | |
 | F2 DoD acceptance + report | TODO | | | |
@@ -482,6 +482,14 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - Privacy gate: degraded; DEGRADED GATE: PASS
 - Code commit: 8adef0c
 - Next step: S1
+
+### [2026-09-24 08:28 UTC] [S1] DONE
+- What was done: `memory/seed_split.py` + `python -m memory seed-split <seed> --out <dir>`: extracts each ``## `<filename>``` and the ````markdown` block right after it; file content = block contents + `"\n"`; parses and checks everything before writing (illegal filenames, duplicate filenames, a heading with no block, an unclosed block → error, **error messages give line numbers only, never content**); if a target already exists, it refuses and writes nothing; files are opened with `"x"`. Output is only `N files written`.
+- Verification: `python -m pytest memory/tests -q` → `75 passed`; the synthetic 3-entry mini seed → 3 files, byte-for-byte identical.
+- Tests: passed=75 failed=0
+- Privacy gate: degraded; DEGRADED GATE: PASS
+- Code commit: 06908ca
+- Next step: S2
 
 ---
 
