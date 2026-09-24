@@ -345,7 +345,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 | R2 Append-only raw layer | DONE | 2026-09-24 07:42 | dbc22d5 |  |
 | R3 Normalization gate | DONE | 2026-09-24 07:47 | f2a9308 |  |
 | G1 Claude export adapter (lossless) | DONE | 2026-09-24 07:54 | d823c11 | export format unverified |
-| G2 CLI ingest | TODO | | | |
+| G2 CLI ingest | DONE | 2026-09-24 08:01 | 65acb08 |  |
 | I1 Rebuildable index + query | TODO | | | |
 | I2 CLI index/query/validate + E2E | TODO | | | |
 | S1 seed_split tool | TODO | | | |
@@ -409,6 +409,27 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - Privacy gate: degraded; DEGRADED GATE: PASS
 - Code commit: d823c11
 - Next step: G2
+
+### [2026-09-24 08:05 UTC] [G2] DONE
+- What was done: `memory/__main__.py`: `python -m memory ingest-claude <path> [--vault V]` (or `HETI_VAULT`; **if neither is given, error out, no default**); raw goes into `<vault>/raw/`; output: number written / duplicates / rejected (source_id + reason for each) / number of non-text items. `main(argv, now=)` can be called directly from tests.
+- Verification (synthetic fixture, manual run):
+  ```
+  $ python -m memory ingest-claude memory/tests/fixtures/claude_export_min.json --vault SP/demo
+  written: 3
+  duplicates: 0
+  rejected: 0
+  non-text items: 1 (kept in the verbatim JSON block)
+  $ python -m memory ingest-claude memory/tests/fixtures/claude_export_min.json
+  python -m memory: error: no vault given: pass --vault or set HETI_VAULT (there is no default)
+  $ ls SP/demo/raw
+  20260102T030405Z-claude-2711c963.md
+  20260103T000000Z-claude-0aa20d53.md
+  20260104T000000Z-claude-213a9dd1.md
+  ```
+- Tests: `python -m pytest memory/tests -q` → `47 passed`; failed=0
+- Privacy gate: degraded; DEGRADED GATE: PASS
+- Code commit: 65acb08
+- Next step: I1
 
 ---
 
