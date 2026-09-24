@@ -343,7 +343,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 |---|---|---|---|---|
 | R1 frontmatter + contract + report skeleton + T0 | DONE | 2026-09-24 07:31 | 295f5a3 | T0=07:31Z; privacy gate degraded (seed missing) |
 | R2 Append-only raw layer | DONE | 2026-09-24 07:42 | dbc22d5 |  |
-| R3 Normalization gate | TODO | | | |
+| R3 Normalization gate | DONE | 2026-09-24 07:47 | f2a9308 |  |
 | G1 Claude export adapter (lossless) | TODO | | | |
 | G2 CLI ingest | TODO | | | |
 | I1 Rebuildable index + query | TODO | | | |
@@ -393,6 +393,14 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - Privacy gate: degraded; DEGRADED GATE: PASS
 - Code commit: dbc22d5
 - Next step: R3
+
+### [2026-09-24 07:52 UTC] [R3] DONE
+- What was done: `memory/gate.py`: `admit(items, raw_dir, now) -> GateResult(written, duplicates, rejected)`. Checks: text is not empty, `source` matches `^[a-z0-9_-]+$`, `source_sha256` is hex, `occurred_at` is parseable, has a timezone (naive or date-only → reject), and falls in 2000-01-01 ≤ t ≤ now+1d. Dedup key = `(source, source_id, source_sha256)` (from existing raw frontmatter + seen within this batch). Filename collisions are rejected with a reason, never overwritten. Every rejection carries a readable reason (DoD-6).
+- Verification: `python -m pytest memory/tests -q` → `33 passed`
+- Tests: passed=33 failed=0
+- Privacy gate: degraded; DEGRADED GATE: PASS
+- Code commit: f2a9308
+- Next step: G1
 
 ---
 
