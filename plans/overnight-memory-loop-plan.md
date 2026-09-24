@@ -341,7 +341,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 
 | Step | Status | Start (UTC) | Code commit | Note |
 |---|---|---|---|---|
-| R1 frontmatter + contract + report skeleton + T0 | TODO | | | |
+| R1 frontmatter + contract + report skeleton + T0 | DONE | 2026-09-24 07:31 | 295f5a3 | T0=07:31Z; privacy gate degraded (seed missing) |
 | R2 Append-only raw layer | TODO | | | |
 | R3 Normalization gate | TODO | | | |
 | G1 Claude export adapter (lossless) | TODO | | | |
@@ -370,6 +370,21 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 ### [2026-09-24] PLAN NOTE
 - The plan (v2) is written. The user asked to "do Heti" and let the agent pick the direction; based on the seed file, it is set to "the first memory-layer loop". The repo is public, so there is a privacy red line and a fail-closed gate (`plans/tools/privacy_check.py`, which was confirmed to catch a leak, pass clean files, and block when the seed is missing).
 - Next step: R1
+
+### [2026-09-24 07:31 UTC] [SETUP] NOTE
+- Executed in a new container/session. The branch this session may push to is `claude/goal-xh1iiw`, so `origin/claude/long-task-autonomous-plan-mhqddg` (plan + BASELINE) was fast-forwarded into it, and all work happens there (red line 7: no pushing to other branches).
+- This session's scratchpad (SP) = `/tmp/claude-0/-home-user-heti/ec61c7be-75d4-593e-a9a1-1107fae05646/scratchpad`.
+- **Seed file missing:** `/root/.claude/uploads/` doesn't exist and a whole-filesystem search found no seed file → **privacy gate degraded** (§5 rule 6b). The gate script `SP/gate.sh`: runs `privacy_check.py --repo` (exit 2 = degraded), checks that staged files are only in `memory/`/`plans/`, checks that staged CJK only hits `memory/README.md`/`plans/`, and checks that the commit message has no CJK.
+- The first version of the gate script used `grep -P '\x{4e00}'`, which failed silently under this locale (fail-open). It was found and replaced with a Python regex detector (self-tested: CJK → detected). Afterwards, the R1 commit's diff and message were checked retroactively: no CJK.
+- Environment: Python 3.11.15, PyYAML 6.0.1, pytest 9.1.1 (installed with pip).
+- send_later trigger_id: trig_014t9eEJqwjmyDQbkcxaLfcf
+
+### [2026-09-24 07:40 UTC] [R1] DONE
+- What was done: `memory/__init__.py`, `frontmatter.py` (BaseLoader, explicit `---` boundaries), `contract.py` (`FIELDS`/`TYPES`/`validate_note`/`parse_time`), and the report skeleton `plans/overnight-memory-loop-report.md`. **T0 = 2026-09-24 07:31 UTC** → no new steps start after 13:01, and F2 must be pushed before 14:01.
+- Verification: `python -m pytest memory/tests -q` → `12 passed in 0.05s`
+- Tests: passed=12 failed=0
+- Privacy gate: degraded (seed missing); DEGRADED GATE: PASS
+- Next step: R2
 
 ---
 
