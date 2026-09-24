@@ -342,7 +342,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 | Step | Status | Start (UTC) | Code commit | Note |
 |---|---|---|---|---|
 | R1 frontmatter + contract + report skeleton + T0 | DONE | 2026-09-24 07:31 | 295f5a3 | T0=07:31Z; privacy gate degraded (seed missing) |
-| R2 Append-only raw layer | TODO | | | |
+| R2 Append-only raw layer | DONE | 2026-09-24 07:42 | dbc22d5 |  |
 | R3 Normalization gate | TODO | | | |
 | G1 Claude export adapter (lossless) | TODO | | | |
 | G2 CLI ingest | TODO | | | |
@@ -386,6 +386,14 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - Privacy gate: degraded (seed missing); DEGRADED GATE: PASS
 - Next step: R2
 
+### [2026-09-24 07:46 UTC] [R2] DONE
+- What was done: `memory/raw_store.py`: `RAW_FIELDS`, `write_raw` (`open(..., "x")` + `chmod 0o444`, filename `YYYYMMDDTHHMMSSZ-<source>-<sha8>.md`), read-only `iter_raw`, and `check_filename` (rejects `/`, `..`, and a leading `.`). No update/delete/overwrite functions.
+- Verification: `python -m pytest memory/tests -q` → `19 passed in 0.06s`
+- Tests: passed=19 failed=0 (new: read back after write, second write raises FileExistsError with bytes unchanged, S_IMODE==0o444, no mutating public names, illegal source filename)
+- Privacy gate: degraded; DEGRADED GATE: PASS
+- Code commit: dbc22d5
+- Next step: R3
+
 ---
 
 ## §9 Needs the user's decision (write it down, do not do it)
@@ -399,6 +407,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - Import scope and filtering (other people's data, private content; #42/#30).
 - The repo is **public**. Should Hēti move to a private repo? Should the old OpenMemory code be archived?
 - Next steps: semantic search (embedding choice), chunking (#46), the extraction layer (waits on #32/#40), the next source.
+- [R2] Raw frontmatter format draft (L1). It separates `occurred_at` and `ingested_at` for raw only (the situation #35 anticipated for imports), and **does not change the note `created` definition**. Filename = UTC time of `occurred_at` + source + first 8 hex chars of `source_sha256`; the fields are centralized in `memory/raw_store.RAW_FIELDS`.
 - (The executing agent adds more here)
 
 ---
