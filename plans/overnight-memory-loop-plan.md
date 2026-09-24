@@ -349,7 +349,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 | I1 Rebuildable index + query | DONE | 2026-09-24 08:07 | 40acaf6 |  |
 | I2 CLI index/query/validate + E2E | DONE | 2026-09-24 08:17 | 8adef0c |  |
 | S1 seed_split tool | DONE | 2026-09-24 08:24 | 06908ca |  |
-| S2 Real seeds (local only) | TODO | | | |
+| S2 Real seeds (local only) | BLOCKED (seed file missing) | 2026-09-24 08:30 | - | no seed in this container; pipeline dry-run on synthetic seed OK |
 | F1 README | TODO | | | |
 | F2 DoD acceptance + report | TODO | | | |
 
@@ -490,6 +490,12 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - Privacy gate: degraded; DEGRADED GATE: PASS
 - Code commit: 06908ca
 - Next step: S2
+
+### [2026-09-24 08:31 UTC] [S2] BLOCKED
+- Reason: `/root/.claude/uploads/` doesn't exist in this container, and a whole-filesystem search for `*heti-vault-seed*` finds 0 files → per §1, S2 is marked `BLOCKED (seed file missing)`. The seed file can't be recreated or guessed.
+- To show the pipeline is ready: the S2 commands were dry-run on a **synthetic** 4-entry fake seed (in SP, not in the repo): `seed-split` → `4 files written`; `validate` → `files: 4 / type decision: 1 / learning: 1 / fact: 1 / open: 1 / other or missing: 0 / distinct status values: 3 / problems: 0 / warnings: 0`; `index rebuild` → `notes: 4`; `query --type open` → 1 row; the file count is 4.
+- For the user to finish it later: see "6. Seed validation results" in the report (commands to run on your own machine; the output stays local).
+- Next step: F1
 
 ---
 
