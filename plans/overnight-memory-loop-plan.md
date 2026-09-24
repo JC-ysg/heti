@@ -347,7 +347,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 | G1 Claude export adapter (lossless) | DONE | 2026-09-24 07:54 | d823c11 | export format unverified |
 | G2 CLI ingest | DONE | 2026-09-24 08:01 | 65acb08 |  |
 | I1 Rebuildable index + query | DONE | 2026-09-24 08:07 | 40acaf6 |  |
-| I2 CLI index/query/validate + E2E | TODO | | | |
+| I2 CLI index/query/validate + E2E | DONE | 2026-09-24 08:17 | 8adef0c |  |
 | S1 seed_split tool | TODO | | | |
 | S2 Real seeds (local only) | TODO | | | |
 | F1 README | TODO | | | |
@@ -440,6 +440,48 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - Privacy gate: degraded; DEGRADED GATE: PASS
 - Code commit: 40acaf6
 - Next step: I2
+
+### [2026-09-24 08:22 UTC] [I2] DONE
+- What was done: CLI `index rebuild [--index DIR]`, `query [--type] [--status] [--since] [--until] [--kind raw|note] [--index]` (one line per item: `path  kind  type  status  about`, missing fields shown as `-`; nothing found → `no matches`), `validate [--details]` (counts only by default: files, type distribution, number of distinct status values, problems, warnings). `memory/tests/test_e2e.py` covers the full DoD-3. Also added `from __future__ import annotations` to `memory/__init__.py` (every module now has it).
+- DoD-3 manual run (synthetic data, `HETI_VAULT=SP/demo`):
+  ```
+  $ python -m memory ingest-claude memory/tests/fixtures/claude_export_min.json
+  written: 3
+  duplicates: 0
+  rejected: 0
+  non-text items: 1 (kept in the verbatim JSON block)
+  $ python -m memory index rebuild
+  notes: 1
+  raw: 3
+  problems: 0
+  warnings: 0
+  index: SP/demo/.heti-index
+  $ python -m memory query --kind raw --since 2026-01-03
+  raw/20260103T000000Z-claude-0aa20d53.md  raw  -  -  -
+  raw/20260104T000000Z-claude-213a9dd1.md  raw  -  -  -
+  $ python -m memory query --type open
+  open-note.md  note  open  todo  Test open question
+  $ python -m memory query --type decision
+  no matches
+  $ python -m memory validate
+  files: 1
+  type decision: 0
+  type learning: 0
+  type fact: 0
+  type open: 1
+  type other or missing: 0
+  distinct status values: 1
+  problems: 0
+  warnings: 0
+  $ grep -c "^type:" SP/demo/raw/*.md
+  SP/demo/raw/20260102T030405Z-claude-2711c963.md:0
+  SP/demo/raw/20260103T000000Z-claude-0aa20d53.md:0
+  SP/demo/raw/20260104T000000Z-claude-213a9dd1.md:0
+  ```
+- Tests: `python -m pytest memory/tests -q` → `67 passed`; failed=0
+- Privacy gate: degraded; DEGRADED GATE: PASS
+- Code commit: 8adef0c
+- Next step: S1
 
 ---
 
