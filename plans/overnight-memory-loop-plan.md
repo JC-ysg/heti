@@ -344,7 +344,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 | R1 frontmatter + contract + report skeleton + T0 | DONE | 2026-09-24 07:31 | 295f5a3 | T0=07:31Z; privacy gate degraded (seed missing) |
 | R2 Append-only raw layer | DONE | 2026-09-24 07:42 | dbc22d5 |  |
 | R3 Normalization gate | DONE | 2026-09-24 07:47 | f2a9308 |  |
-| G1 Claude export adapter (lossless) | TODO | | | |
+| G1 Claude export adapter (lossless) | DONE | 2026-09-24 07:54 | d823c11 | export format unverified |
 | G2 CLI ingest | TODO | | | |
 | I1 Rebuildable index + query | TODO | | | |
 | I2 CLI index/query/validate + E2E | TODO | | | |
@@ -402,6 +402,14 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - Code commit: f2a9308
 - Next step: G1
 
+### [2026-09-24 08:00 UTC] [G1] DONE
+- What was done: `memory/adapters/claude_export.py`: `read_export(path)` takes json/directory/zip; body = transcript + verbatim JSON; `source_sha256` = sha256(json.dumps(conv, sort_keys=True, ensure_ascii=False)); `extract_source_json(body)` recovers the original object; empty conversations still go in ("(no messages)"); stats count non-text items/attachments/files. Synthetic fixture `memory/tests/fixtures/claude_export_min.json` (3 conversations: empty conversation, text-only message, tool_use, attachment).
+- Verification: `python -m pytest memory/tests -q` → `42 passed`
+- Tests: passed=42 failed=0 (includes DoD-4 b: re-import adds 0; c: a grown conversation adds 1 and the old one is byte-for-byte unchanged; d: json.loads equals the original for all 3; the hash doesn't depend on key order; a malformed conversation gets rejected with a reason)
+- Privacy gate: degraded; DEGRADED GATE: PASS
+- Code commit: d823c11
+- Next step: G2
+
 ---
 
 ## §9 Needs the user's decision (write it down, do not do it)
@@ -416,6 +424,9 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - The repo is **public**. Should Hēti move to a private repo? Should the old OpenMemory code be archived?
 - Next steps: semantic search (embedding choice), chunking (#46), the extraction layer (waits on #32/#40), the next source.
 - [R2] Raw frontmatter format draft (L1). It separates `occurred_at` and `ingested_at` for raw only (the situation #35 anticipated for imports), and **does not change the note `created` definition**. Filename = UTC time of `occurred_at` + source + first 8 hex chars of `source_sha256`; the fields are centralized in `memory/raw_store.RAW_FIELDS`.
+- [G1] The raw form for imports = transcript + verbatim JSON (`## Source JSON (verbatim)` + a ```json block, `json.dumps(conv, ensure_ascii=False, indent=1)`). Confirm this, or pick another lossless form.
+- [G1] When a conversation grows and is re-imported, a new raw item is created (the old one is unchanged). Whether queries should show only the newest is tied to #29.
+- [G1] The Claude export structure was written from memory and **has not been checked against a real export**. Before a real import, check it on a throwaway vault first. Note: on Python 3.9/3.10, `datetime.fromisoformat` only accepts 3 or 6 fractional digits; any other precision gets rejected by the gate as unparseable (with a reason, not silently).
 - (The executing agent adds more here)
 
 ---
