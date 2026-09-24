@@ -350,7 +350,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 | I2 CLI index/query/validate + E2E | DONE | 2026-09-24 08:17 | 8adef0c |  |
 | S1 seed_split tool | DONE | 2026-09-24 08:24 | 06908ca |  |
 | S2 Real seeds (local only) | BLOCKED (seed file missing) | 2026-09-24 08:30 | - | no seed in this container; pipeline dry-run on synthetic seed OK |
-| F1 README | TODO | | | |
+| F1 README | DONE | 2026-09-24 08:34 | ee214d7 |  |
 | F2 DoD acceptance + report | TODO | | | |
 
 ---
@@ -496,6 +496,14 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - To show the pipeline is ready: the S2 commands were dry-run on a **synthetic** 4-entry fake seed (in SP, not in the repo): `seed-split` → `4 files written`; `validate` → `files: 4 / type decision: 1 / learning: 1 / fact: 1 / open: 1 / other or missing: 0 / distinct status values: 3 / problems: 0 / warnings: 0`; `index rebuild` → `notes: 4`; `query --type open` → 1 row; the file count is 4.
 - For the user to finish it later: see "6. Seed validation results" in the report (commands to run on your own machine; the output stays local).
 - Next step: F1
+
+### [2026-09-24 08:38 UTC] [F1] DONE
+- What was done: `memory/README.md` (in Chinese): minimum Python ≥ 3.9, `python3 -m pip install pyyaml`, 3 commands to use it, the `HETI_VAULT` env var, the directory structure, the note contract, the raw format, what it does and doesn't do, the architecture sources (**quoting the §0 table wording verbatim**), and a ⚠️ warning to try a throwaway `--vault` first (#30/#42).
+- Verification: ran the README commands in order on a synthetic zip (`HETI_VAULT=SP/try`): `ingest-claude export.zip` → `written: 3 / duplicates: 0 / rejected: 0`; `index rebuild` → `notes: 0 / raw: 3`; `query --kind raw --since 2026-01-01` → 3 rows; `query --type open` → `no matches`; `validate` → `files: 0`.
+- Python 3.9 compatibility: `uv run --python 3.9 --with pytest --with pyyaml==6.0.1 python -m pytest memory/tests -q` → `75 passed in 0.64s`
+- Privacy gate: degraded; CJK only in `memory/README.md` (allowed by rule 6b); DEGRADED GATE: PASS
+- Code commit: ee214d7
+- Next step: F2
 
 ---
 
