@@ -346,7 +346,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 | R3 Normalization gate | DONE | 2026-09-24 07:47 | f2a9308 |  |
 | G1 Claude export adapter (lossless) | DONE | 2026-09-24 07:54 | d823c11 | export format unverified |
 | G2 CLI ingest | DONE | 2026-09-24 08:01 | 65acb08 |  |
-| I1 Rebuildable index + query | TODO | | | |
+| I1 Rebuildable index + query | DONE | 2026-09-24 08:07 | 40acaf6 |  |
 | I2 CLI index/query/validate + E2E | TODO | | | |
 | S1 seed_split tool | TODO | | | |
 | S2 Real seeds (local only) | TODO | | | |
@@ -431,6 +431,16 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - Code commit: 65acb08
 - Next step: I1
 
+### [2026-09-24 08:15 UTC] [I1] DONE
+- What was done: `memory/index.py`: `rebuild(vault, index_dir=None)` (default `<vault>/.heti-index/`; refuses the vault/its ancestors/inside raw/a non-empty directory without a marker; only deletes and rewrites `index.json`/`problems.json`/`.heti-index`, each unlinked before a fresh `open(...,"x")`, so it never writes through a symlink; no rmtree). Scan: `*.md` in the vault (excluding dot directories and `raw/`) + `raw/*.md`; output is sorted and deterministic. `query(index_dir, type, status, since, until, kind)`, where every record has `path`.
+- Verification: `python -m pytest memory/tests -q` → `62 passed`
+- DoD-4(e) grep → only hits `memory/index.py:100` (comment) and `memory/index.py:102` (`path.unlink(missing_ok=True)`, the whitelisted spot). (An earlier version also hit 2 lines in the tests; they were changed to use rename instead.)
+- DoD-9 grep → no output.
+- Tests: passed=62 failed=0 (DoD-5 a/b/c, including refusing `vault`/`raw`/`raw/sub`/the vault's parent directory with raw bytes unchanged; a symlinked index file doesn't write through to raw)
+- Privacy gate: degraded; DEGRADED GATE: PASS
+- Code commit: 40acaf6
+- Next step: I2
+
 ---
 
 ## §9 Needs the user's decision (write it down, do not do it)
@@ -448,6 +458,8 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 - [G1] The raw form for imports = transcript + verbatim JSON (`## Source JSON (verbatim)` + a ```json block, `json.dumps(conv, ensure_ascii=False, indent=1)`). Confirm this, or pick another lossless form.
 - [G1] When a conversation grows and is re-imported, a new raw item is created (the old one is unchanged). Whether queries should show only the newest is tied to #29.
 - [G1] The Claude export structure was written from memory and **has not been checked against a real export**. Before a real import, check it on a throwaway vault first. Note: on Python 3.9/3.10, `datetime.fromisoformat` only accepts 3 or 6 fractional digits; any other precision gets rejected by the gate as unparseable (with a reason, not silently).
+- [I1] `--since/--until` compare calendar dates only: notes use `created` **as written** (a datetime with a timezone is not converted to UTC; the date on it is taken directly), raw uses the UTC date of `occurred_at`. Records with no parseable date are excluded when a date filter is given.
+- [I1] Non-string frontmatter values (such as a `tags` list) are stored in the index as JSON strings.
 - (The executing agent adds more here)
 
 ---
