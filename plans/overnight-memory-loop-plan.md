@@ -606,7 +606,7 @@ Status: `TODO` / `IN_PROGRESS` / `DONE` / `BLOCKED` / `SKIPPED (reason)`. **Only
 ## Appendix: adversarial review record
 
 - **v0** (test hardening for the old OpenMemory code): scrapped once the user provided the seed file, because it didn't match the architecture decisions.
-- **v1 → v2:** the review was meant to use Fable, but Fable was out of usage credits (429), so an Opus subagent ran the same adversarial prompt. Everything it raised was adopted:
+- **v1 → v2:** the review was meant to use another model, which was unavailable (HTTP 429), so an Opus subagent ran the same adversarial prompt. Everything it raised was adopted:
 
 | # | Severity | Finding | How it was handled |
 |---|---|---|---|
